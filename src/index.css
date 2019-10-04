@@ -42,18 +42,17 @@ code {
 }
 
 .hand-card {
-  height: 150px;
+  height: auto;
   margin: 0 -25px;
   position: relative;
-  width: 100px;
+  width: 12%;
+  height: auto;
 }
 
 .hand-card:after {
   bottom: 0;
   content: '';
-  left: -60px;
   position: absolute;
-  right: -60px;
   top: 0px;
   z-index: 10
 }
@@ -82,11 +81,7 @@ code {
 }
 
 .hand-card-label {
-  font-family: 'helvetica neue', helvetica, arial, sans-serif;
-  font-size: 24px;
-  font-weight: bold;
-  letter-spacing: -0.025em;
-  padding: 15px 0 0 15px;
+  width: 150%;
 }
 
 .hand-card:nth-child(1) .hand-card-face {
@@ -94,7 +89,7 @@ code {
 }
 
 .hand-card:nth-child(1):hover .hand-card-face {
-  transform: translateY(-100px) rotate(0deg) scale(2);
+  transform: translateY(-170px) rotate(0deg) scale(2);
   transition-duration: 0ms;
   z-index: 5;
 }
@@ -108,7 +103,7 @@ code {
   transform: translateY(35px) rotate(-21.875deg);
 }
 .hand-card:nth-child(2):hover .hand-card-face {
-  transform: translateY(-100px) rotate(0deg) scale(2);
+  transform: translateY(-170px) rotate(0deg) scale(2);
   transition-duration: 0ms;
   z-index: 5;
 }
@@ -123,7 +118,7 @@ code {
 }
 
 .hand-card:nth-child(3):hover .hand-card-face {
-  transform: translateY(-100px) rotate(0deg) scale(2);
+  transform: translateY(-170px) rotate(0deg) scale(2);
   transition-duration: 0ms;
   z-index: 5;
 }
@@ -138,7 +133,7 @@ code {
 }
 
 .hand-card:nth-child(4):hover .hand-card-face {
-  transform: translateY(-100px) rotate(0deg) scale(2);
+  transform: translateY(-170px) rotate(0deg) scale(2);
   transition-duration: 0ms;
   z-index: 5;
 }
@@ -153,7 +148,7 @@ code {
 }
 
 .hand-card:nth-child(5):hover .hand-card-face {
-  transform: translateY(-100px) rotate(0deg) scale(2);
+  transform: translateY(-170px) rotate(0deg) scale(2);
   transition-duration: 0ms;
   z-index: 5;
 }
@@ -169,7 +164,7 @@ code {
 }
 
 .hand-card:nth-child(6):hover .hand-card-face {
-  transform: translateY(-100px) rotate(0deg) scale(2);
+  transform: translateY(-170px) rotate(0deg) scale(2);
   transition-duration: 0ms;
   z-index: 5;
 }
@@ -184,7 +179,7 @@ code {
 }
 
 .hand-card:nth-child(7):hover .hand-card-face {
-  transform: translateY(-100px) rotate(0deg) scale(2);
+  transform: translateY(-170px) rotate(0deg) scale(2);
   transition-duration: 0ms;
   z-index: 5;
 }
@@ -199,7 +194,7 @@ code {
 }
 
 .hand-card:nth-child(8):hover .hand-card-face {
-  transform: translateY(-100px) rotate(0deg) scale(2);
+  transform: translateY(-170px) rotate(0deg) scale(2);
   transition-duration: 0ms;
   z-index: 5;
 }
@@ -214,7 +209,7 @@ code {
 }
 
 .hand-card:nth-child(9):hover .hand-card-face {
-  transform: translateY(-100px) rotate(0deg) scale(2);
+  transform: translateY(-170px) rotate(0deg) scale(2);
   transition-duration: 0ms;
   z-index: 5;
 }
@@ -229,7 +224,7 @@ code {
 }
 
 .hand-card:nth-child(10):hover .hand-card-face {
-  transform: translateY(-100px) rotate(0deg) scale(2);
+  transform: translateY(-170px) rotate(0deg) scale(2);
   transition-duration: 0ms;
   z-index: 5;
 }
@@ -239,13 +234,23 @@ code {
 .hand-card:nth-child(10):hover:after {
   top: -175px;
 }
-@keyframes fade {
-  0% {
-    opacity: 0.9;
-    transform: scale(1);
- }
-  100% {
-    opacity: 0;
-    transform: scale(1.15);
- }
+
+.card-image-container {
+  border: 1px solid white;
+  height: 60vh;
+  width: 90%;
+  margin: 20px auto 0px auto;
+  display: flex;
+  flex-flow: row wrap;
+  overflow: hidden;
+  justify-content: center;
+}
+
+.card-image {
+  width: 18%;
+  transition: 800ms cubic-bezier(0.19, 1, 0.22, 1) transform;
+}
+
+.card-image:hover {
+  transform: scale(1.5);
 }

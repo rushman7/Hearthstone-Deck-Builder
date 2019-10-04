@@ -1,7 +1,8 @@
 import { 
   FETCH_CARDS_START,
   FETCH_CARDS_SUCCESS,
-  FETCH_CARDS_FAILURE
+  FETCH_CARDS_FAILURE,
+  ADD_PLAYER_HAND
 } from '../actions';
 
 const initialState = {
@@ -27,6 +28,7 @@ const initialState = {
   },
   error: '',
   isFetching: false,
+  playerHand: [],
 }
 
 export const rootReducer = (state = initialState, action) => {
@@ -42,13 +44,21 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         error: '',
         isFetching: false,
-        cards: action.payload
+        cards: {
+          Classic: action.payload
+        },
       }
     case FETCH_CARDS_FAILURE:
       return {
         ...state,
         error: action.payload,
         isFetching: false
+      }
+    case ADD_PLAYER_HAND:
+      return {
+        ...state,
+        playerHand: [...state.playerHand, action.payload],
+        error: ''
       }
     default:
       return state;

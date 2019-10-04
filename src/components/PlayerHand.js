@@ -1,19 +1,26 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const temp = [1,2,3,4,5,6,7,8,9,10]
-
-export default function PlayerHand(props) {
+const PlayerHand = props => {
   return (
     <div className="hand-cards">
-      {temp.map((item, index) => (
+      {props.playerHand.map((card, index) => (
         <div className="hand-card" key={index}>
           <div className="hand-card-face">
-            <div className="hand-card-label">
-              {item}
-            </div>
+            <img 
+              src={card.img} 
+              alt={card.name} 
+              className="hand-card-label"
+            />
           </div>
         </div>
       ))}
     </div>
   )
 }
+
+const mapStateToProps = state => ({
+  playerHand: state.playerHand,
+})
+
+export default connect(mapStateToProps, {})(PlayerHand);
