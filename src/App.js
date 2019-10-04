@@ -1,15 +1,27 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { fetchHSCards } from './actions';
 
-function App() {
+function App(props) {
+
+  const fetchCards = () => {
+    props.fetchHSCards()
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <a>
-          Learn React
-        </a>
+        <button></button>
       </header>
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    cards: [],
+    error: ''
+  }
+}
+
+export default connect(mapStateToProps, {})(App);
