@@ -18,6 +18,19 @@ export const rootReducer = (state = initialState, action) => {
         error: '',
         isFetching: true
       }
+    case FETCH_CARDS_SUCCESS:
+      return {
+        ...state,
+        error: '',
+        isFetching: false,
+        cards: action.payload
+      }
+    case FETCH_CARDS_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        isFetching: false
+      }
     default:
       return state;
   }

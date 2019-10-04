@@ -13,7 +13,7 @@ function App(props) {
     <div className="App">
       <header className="App-header">
         <div>
-          {props.cards.map(card => <h4>{card.name}</h4>)}
+          {props.cards.map(card => <h4 key={card.cardId}>{card.name}</h4>)}
         </div>
         {props.error && <p className="error">{props.error}</p>}
         <button onClick={fetchCards}>Fetch HS Cards</button>
