@@ -29,3 +29,223 @@ code {
   max-width: 700px;
   margin: 16px auto;
 }
+
+.hand-cards {
+  bottom: 0;
+  display: flex;
+  height: 150px;
+  padding: 0 50px;
+  justify-content: center;
+  position: fixed;
+  left: 0;
+  right: 0;
+}
+
+.hand-card {
+  height: 150px;
+  margin: 0 -25px;
+  position: relative;
+  width: 100px;
+}
+
+.hand-card:after {
+  bottom: 0;
+  content: '';
+  left: -60px;
+  position: absolute;
+  right: -60px;
+  top: 0px;
+  z-index: 10
+}
+
+.hand-card-face {
+  bottom: 0;
+  content: '';
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 800ms cubic-bezier(0.19, 1, 0.22, 1) transform;
+}
+
+.hand-card-face:after {
+  animation: none;
+  background: #fff;
+  bottom: 0;
+  content: '';
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.hand-card-label {
+  font-family: 'helvetica neue', helvetica, arial, sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: -0.025em;
+  padding: 15px 0 0 15px;
+}
+
+.hand-card:nth-child(1) .hand-card-face {
+  transform: translateY(45px) rotate(-28.125deg);
+}
+
+.hand-card:nth-child(1):hover .hand-card-face {
+  transform: translateY(-100px) rotate(0deg) scale(2);
+  transition-duration: 0ms;
+  z-index: 5;
+}
+.hand-card:nth-child(1):hover .hand-card-face:after {
+  animation: fade 250ms ease-out forwards;
+}
+.hand-card:nth-child(1):hover:after {
+  top: -175px;
+}
+.hand-card:nth-child(2) .hand-card-face {
+  transform: translateY(35px) rotate(-21.875deg);
+}
+.hand-card:nth-child(2):hover .hand-card-face {
+  transform: translateY(-100px) rotate(0deg) scale(2);
+  transition-duration: 0ms;
+  z-index: 5;
+}
+.hand-card:nth-child(2):hover .hand-card-face:after {
+  animation: fade 250ms ease-out forwards;
+}
+.hand-card:nth-child(2):hover:after {
+  top: -175px;
+}
+.hand-card:nth-child(3) .hand-card-face {
+  transform: translateY(25px) rotate(-15.625deg);
+}
+
+.hand-card:nth-child(3):hover .hand-card-face {
+  transform: translateY(-100px) rotate(0deg) scale(2);
+  transition-duration: 0ms;
+  z-index: 5;
+}
+.hand-card:nth-child(3):hover .hand-card-face:after {
+  animation: fade 250ms ease-out forwards;
+}
+.hand-card:nth-child(3):hover:after {
+  top: -175px;
+}
+.hand-card:nth-child(4) .hand-card-face {
+  transform: translateY(15px) rotate(-9.375deg);
+}
+
+.hand-card:nth-child(4):hover .hand-card-face {
+  transform: translateY(-100px) rotate(0deg) scale(2);
+  transition-duration: 0ms;
+  z-index: 5;
+}
+.hand-card:nth-child(4):hover .hand-card-face:after {
+  animation: fade 250ms ease-out forwards;
+}
+.hand-card:nth-child(4):hover:after {
+  top: -175px;
+}
+.hand-card:nth-child(5) .hand-card-face {
+  transform: translateY(5px) rotate(-3.125deg);
+}
+
+.hand-card:nth-child(5):hover .hand-card-face {
+  transform: translateY(-100px) rotate(0deg) scale(2);
+  transition-duration: 0ms;
+  z-index: 5;
+}
+.hand-card:nth-child(5):hover .hand-card-face:after {
+  animation: fade 250ms ease-out forwards;
+}
+
+.hand-card:nth-child(5):hover:after {
+  top: -175px;
+}
+.hand-card:nth-child(6) .hand-card-face {
+  transform: translateY(5px) rotate(3.125deg);
+}
+
+.hand-card:nth-child(6):hover .hand-card-face {
+  transform: translateY(-100px) rotate(0deg) scale(2);
+  transition-duration: 0ms;
+  z-index: 5;
+}
+.hand-card:nth-child(6):hover .hand-card-face:after {
+  animation: fade 250ms ease-out forwards;
+}
+.hand-card:nth-child(6):hover:after {
+  top: -175px;
+}
+.hand-card:nth-child(7) .hand-card-face {
+  transform: translateY(15px) rotate(9.375deg);
+}
+
+.hand-card:nth-child(7):hover .hand-card-face {
+  transform: translateY(-100px) rotate(0deg) scale(2);
+  transition-duration: 0ms;
+  z-index: 5;
+}
+.hand-card:nth-child(7):hover .hand-card-face:after {
+  animation: fade 250ms ease-out forwards;
+}
+.hand-card:nth-child(7):hover:after {
+  top: -175px;
+}
+.hand-card:nth-child(8) .hand-card-face {
+  transform: translateY(25px) rotate(15.625deg);
+}
+
+.hand-card:nth-child(8):hover .hand-card-face {
+  transform: translateY(-100px) rotate(0deg) scale(2);
+  transition-duration: 0ms;
+  z-index: 5;
+}
+.hand-card:nth-child(8):hover .hand-card-face:after {
+  animation: fade 250ms ease-out forwards;
+}
+.hand-card:nth-child(8):hover:after {
+  top: -175px;
+}
+.hand-card:nth-child(9) .hand-card-face {
+  transform: translateY(35px) rotate(21.875deg);
+}
+
+.hand-card:nth-child(9):hover .hand-card-face {
+  transform: translateY(-100px) rotate(0deg) scale(2);
+  transition-duration: 0ms;
+  z-index: 5;
+}
+.hand-card:nth-child(9):hover .hand-card-face:after {
+  animation: fade 250ms ease-out forwards;
+}
+.hand-card:nth-child(9):hover:after {
+  top: -175px;
+}
+.hand-card:nth-child(10) .hand-card-face {
+  transform: translateY(45px) rotate(28.125deg);
+}
+
+.hand-card:nth-child(10):hover .hand-card-face {
+  transform: translateY(-100px) rotate(0deg) scale(2);
+  transition-duration: 0ms;
+  z-index: 5;
+}
+.hand-card:nth-child(10):hover .hand-card-face:after {
+  animation: fade 250ms ease-out forwards;
+}
+.hand-card:nth-child(10):hover:after {
+  top: -175px;
+}
+@keyframes fade {
+  0% {
+    opacity: 0.9;
+    transform: scale(1);
+ }
+  100% {
+    opacity: 0;
+    transform: scale(1.15);
+ }
+}
