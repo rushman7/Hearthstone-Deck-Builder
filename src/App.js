@@ -11,7 +11,7 @@ function App(props) {
   }
 
   const testState = () => (
-    console.log(props.cards)
+    console.log(props.playerHand)
   )
 
   return (
@@ -27,7 +27,8 @@ function App(props) {
 
 const mapStateToProps = state => ({
   cards: state.cards,
-  error: state.error
+  error: state.error,
+  playerHand: state.playerHand,
 })
 
 export default connect(mapStateToProps, {fetchHSCards})(App);

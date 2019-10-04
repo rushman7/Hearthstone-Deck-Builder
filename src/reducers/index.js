@@ -2,7 +2,8 @@ import {
   FETCH_CARDS_START,
   FETCH_CARDS_SUCCESS,
   FETCH_CARDS_FAILURE,
-  ADD_PLAYER_HAND
+  ADD_PLAYER_HAND,
+  REMOVE_PLAYER_HAND
 } from '../actions';
 
 const initialState = {
@@ -59,6 +60,11 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         playerHand: [...state.playerHand, action.payload],
         error: ''
+      }
+    case REMOVE_PLAYER_HAND:
+      return {
+        ...state,
+        playerHand: state.playerHand.filter(card => card.dbfId !== action.payload)
       }
     default:
       return state;

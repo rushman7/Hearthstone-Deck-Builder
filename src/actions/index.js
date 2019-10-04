@@ -5,6 +5,7 @@ export const FETCH_CARDS_SUCCESS = 'FETCH_CARDS_SUCCESS';
 export const FETCH_CARDS_FAILURE = 'FETCH_CARDS_FAILURE';
 
 export const ADD_PLAYER_HAND = 'ADD_PLAYER_HAND';
+export const REMOVE_PLAYER_HAND = 'REMOVE_PLAYER_HAND';
 
 export const fetchHSCards = () => dispatch => {
   dispatch({ type: FETCH_CARDS_START });
@@ -16,11 +17,9 @@ export const fetchHSCards = () => dispatch => {
       }
     })
     .then(res => {
-      console.log(res.data)
       dispatch({ type: FETCH_CARDS_SUCCESS, payload: res.data})
     })
     .catch(err => {
-      console.log(err.response)
       dispatch({ 
         type: FETCH_CARDS_FAILURE, 
         payload: `${err.response.data.error} - ${err.response.data.message}` 
@@ -29,9 +28,16 @@ export const fetchHSCards = () => dispatch => {
 }
 
 export const addPlayerHand = item => {
-  console.log(item)
   return {
     type: ADD_PLAYER_HAND,
     payload: item
+  }
+}
+
+export const removePlayerHand = id => {
+  console.log(id);
+  return {
+    type: REMOVE_PLAYER_HAND,
+    payload: id
   }
 }

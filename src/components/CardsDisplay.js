@@ -4,8 +4,8 @@ import { addPlayerHand } from '../actions/index';
 
 const CardsDisplay = props => {
   const addPlayerHand = card => {
-    if (props.playerHand.length >= 10) {
-      alert('Your hand is full!')
+    if (props.playerHand.length >= 10 || props.playerHand.includes(card)) {
+      alert('Your hand is full or card already exists!')
     } else {
       props.addPlayerHand(card)
     }

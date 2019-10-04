@@ -1,11 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { removePlayerHand } from '../actions/index';
 
 const PlayerHand = props => {
+  const removePlayerHand = id => {
+    props.removePlayerHand(id)
+  }
   return (
     <div className="hand-cards">
-      {props.playerHand.map((card, index) => (
-        <div className="hand-card" key={index}>
+      {
+        props.playerHand.length > 0 
+        ? props.playerHand.map(card => (
+        <div className="hand-card" key={card.dbfId} onClick={() => removePlayerHand(card.dbfId)}>
           <div className="hand-card-face">
             <img 
               src={card.img} 
@@ -14,7 +20,9 @@ const PlayerHand = props => {
             />
           </div>
         </div>
-      ))}
+      ))
+      : <p>Your hand is empty. Select cards to add them to your hand.</p>
+    }
     </div>
   )
 }
@@ -23,4 +31,4 @@ const mapStateToProps = state => ({
   playerHand: state.playerHand,
 })
 
-export default connect(mapStateToProps, {})(PlayerHand);
+export default connect(mapStateToProps, { removePlayerHand })(PlayerHand);
