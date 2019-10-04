@@ -5,7 +5,9 @@ import {
 } from '../actions';
 
 const initialState = {
-  cards: [],
+  cards: {
+    Classic: [],
+  },
   error: '',
   isFetching: false,
 }

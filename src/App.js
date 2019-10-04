@@ -3,21 +3,23 @@ import { connect } from 'react-redux';
 import { fetchHSCards } from './actions/index';
 
 function App(props) {
-
   const fetchCards = e => {
     e.preventDefault();
     props.fetchHSCards()
   }
 
+  const getCard = () => (
+    console.log(props.cards.Classic[0])
+  )
+
   return (
     <div className="App">
-      <header className="App-header">
-        <div>
-          {props.cards.map(card => <h4 key={card.cardId}>{card.name}</h4>)}
-        </div>
-        {props.error && <p className="error">{props.error}</p>}
-        <button onClick={fetchCards}>Fetch HS Cards</button>
-      </header>
+      <div>
+        {props.cards.Classic.map(card => <img src={card.img} alt={card.name} key={card.cardId}/>)}
+      </div>
+      {props.error && <p className="error">{props.error}</p>}
+      <button onClick={fetchCards}>Fetch HS Cards</button>
+      <button onClick={getCard}>Get HS Card</button>
     </div>
   );
 }
