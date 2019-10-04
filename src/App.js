@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchHSCards } from './actions/index';
+import PlayerHand from './components/PlayerHanderHand';
 
 function App(props) {
   const fetchCards = e => {
@@ -20,6 +21,7 @@ function App(props) {
       {props.error && <p className="error">{props.error}</p>}
       <button onClick={fetchCards}>Fetch HS Cards</button>
       <button onClick={getCard}>Get HS Card</button>
+      <PlayerHand />
     </div>
   );
 }
