@@ -1,16 +1,22 @@
-import { FETCH_HS_CARDS } from '../actions';
+import { 
+  FETCH_CARDS_START,
+  FETCH_CARDS_SUCCESS,
+  FETCH_CARDS_FAILURE
+} from '../actions';
 
 const initialState = {
   cards: [],
-  error: ''
+  error: '',
+  isFetching: false,
 }
 
 export const rootReducer = (state = initialState, action) => {
   switch(action.type) { 
-    case FETCH_HS_CARDS:
+    case FETCH_CARDS_START:
       return {
         ...state,
-        error: 'Nothing to do...'
+        error: '',
+        isFetching: true
       }
     default:
       return state;
