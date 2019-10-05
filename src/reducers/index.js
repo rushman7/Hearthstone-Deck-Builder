@@ -3,7 +3,9 @@ import {
   FETCH_CARDS_SUCCESS,
   FETCH_CARDS_FAILURE,
   ADD_PLAYER_HAND,
-  REMOVE_PLAYER_HAND
+  REMOVE_PLAYER_HAND,
+  NEXT_PAGE,
+  PREV_PAGE
 } from '../actions';
 
 const initialState = {
@@ -30,6 +32,8 @@ const initialState = {
   error: '',
   isFetching: false,
   playerHand: [],
+  currPage: 1,
+  totalPages: 25
 }
 
 export const rootReducer = (state = initialState, action) => {
@@ -65,6 +69,16 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         playerHand: state.playerHand.filter(card => card.dbfId !== action.payload)
+      }
+    case NEXT_PAGE:
+      return {
+        ...state,
+        currPage: state.currPage + 1,
+      }
+    case PREV_PAGE:
+      return {
+        ...state,
+        currPage: state.currPage - 1,
       }
     default:
       return state;

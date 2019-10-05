@@ -1,33 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux'
 import { addPlayerHand } from '../actions/index';
+import Pagination from './Pagination';
 
 const CardsDisplay = props => {
-  const [pageState, setPageState] = useState({
-    currPage: 1,
-    totalPages: 25
-  })
-
-  const { Classic } = props.cards;
-
-  let currPageCards = Classic.slice((pageState.currPage * 10 ) - 10, pageState.currPage * 10)
-
-  const onNextChange = () => {
-    setPageState(prevState => ({
-      ...prevState,
-      currPage: prevState.currPage + 1,
-      totalPages: Math.ceil(Classic.length / 10)
-    }))
-  }
-
-  const onPrevChange = () => {
-    setPageState(prevState => ({
-      ...prevState,
-      currPage: prevState.currPage - 1,
-      totalPages: Math.ceil(Classic.length / 10)
-    }))
-  }
-
   const addPlayerHand = card => {
     if (props.playerHand.length >= 10 || props.playerHand.includes(card)) {
       alert('Your hand is full or card already exists!')
@@ -35,6 +11,8 @@ const CardsDisplay = props => {
       props.addPlayerHand(card)
     }
   }
+
+  let currPageCards = props.cards.Classic.slice((props.currPage * 10 ) - 10, props.currPage * 10)
 
   return (
     <div>
@@ -50,8 +28,7 @@ const CardsDisplay = props => {
           />)
         }
       </div>
-      <button onClick={onNextChange}> Next </button>
-      <button onClick={onPrevChange}> Prev </button>
+      <Pagination classic={props.cards.Classic}/>
     </div>
   )
 }
@@ -60,6 +37,7 @@ const mapStateToProps = state => ({
   cards: state.cards,
   error: state.error,
   playerHand: state.playerHand,
+  currPage: state.currPage,
 })
 
 export default connect(mapStateToProps, { addPlayerHand })(CardsDisplay);
