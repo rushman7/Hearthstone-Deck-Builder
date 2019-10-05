@@ -254,3 +254,13 @@ code {
 .card-image:hover {
   transform: scale(1.5);
 }
+
+#react-paginate ul {
+  display: inline-block;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#react-paginate li {
+  display: inline-block;
+}
