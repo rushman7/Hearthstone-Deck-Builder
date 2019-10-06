@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { addPlayerHand } from '../actions/index';
-import Pagination from './Pagination';
+import PaginationPage from './PaginationPage';
 
 const CardsDisplay = props => {
   const addPlayerHand = card => {
@@ -14,12 +14,17 @@ const CardsDisplay = props => {
 
   let currPageCards = props.cards.Classic.slice((props.currPage * 10 ) - 10, props.currPage * 10)
 
+  const addDefaultSrc = e => {
+    e.target.src = 'https://i.imgur.com/NegDK4H.png'
+  }
+
   return (
     <div>
       <div className="card-image-container">
         {
           currPageCards.map(card => 
           <img 
+            onError={addDefaultSrc}
             src={card.img} 
             alt={card.name} 
             key={card.cardId}
@@ -28,7 +33,7 @@ const CardsDisplay = props => {
           />)
         }
       </div>
-      <Pagination classic={props.cards.Classic}/>
+      <PaginationPage classic={props.cards.Classic}/>
     </div>
   )
 }

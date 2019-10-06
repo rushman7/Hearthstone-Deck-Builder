@@ -6,8 +6,7 @@ export const FETCH_CARDS_FAILURE = 'FETCH_CARDS_FAILURE';
 
 export const ADD_PLAYER_HAND = 'ADD_PLAYER_HAND';
 export const REMOVE_PLAYER_HAND = 'REMOVE_PLAYER_HAND';
-export const NEXT_PAGE = 'NEXT_PAGE'
-export const PREV_PAGE = 'PREV_PAGE'
+export const CHANGE_PAGE = 'CHANGE_PAGE'
 
 export const fetchHSCards = () => dispatch => {
   dispatch({ type: FETCH_CARDS_START });
@@ -37,21 +36,15 @@ export const addPlayerHand = item => {
 }
 
 export const removePlayerHand = id => {
-  console.log(id);
   return {
     type: REMOVE_PLAYER_HAND,
     payload: id
   }
 }
 
-export const nextPage = () => {
+export const changePage = currPage => {
   return {
-    type: NEXT_PAGE,
-  }
-}
-
-export const prevPage = () => {
-  return {
-    type: PREV_PAGE,
+    type: CHANGE_PAGE,
+    payload: currPage
   }
 }

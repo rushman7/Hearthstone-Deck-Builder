@@ -33,7 +33,7 @@ code {
 .hand-cards {
   bottom: 0;
   display: flex;
-  height: 150px;
+  height: 180px;
   padding: 0 50px;
   justify-content: center;
   position: fixed;
@@ -42,10 +42,9 @@ code {
 }
 
 .hand-card {
-  height: auto;
   margin: 0 -25px;
   position: relative;
-  width: 12%;
+  width: 8%;
   height: auto;
 }
 
@@ -81,11 +80,11 @@ code {
 }
 
 .hand-card-label {
-  width: 150%;
+  width: 100%;
 }
 
 .hand-card:nth-child(1) .hand-card-face {
-  transform: translateY(45px) rotate(-28.125deg);
+  transform: translateY(85px) rotate(-28.125deg);
 }
 
 .hand-card:nth-child(1):hover .hand-card-face {
@@ -100,7 +99,7 @@ code {
   top: -175px;
 }
 .hand-card:nth-child(2) .hand-card-face {
-  transform: translateY(35px) rotate(-21.875deg);
+  transform: translateY(55px) rotate(-21.875deg);
 }
 .hand-card:nth-child(2):hover .hand-card-face {
   transform: translateY(-170px) rotate(0deg) scale(2);
@@ -129,7 +128,7 @@ code {
   top: -175px;
 }
 .hand-card:nth-child(4) .hand-card-face {
-  transform: translateY(15px) rotate(-9.375deg);
+  transform: translateY(5px) rotate(-9.375deg);
 }
 
 .hand-card:nth-child(4):hover .hand-card-face {
@@ -144,7 +143,7 @@ code {
   top: -175px;
 }
 .hand-card:nth-child(5) .hand-card-face {
-  transform: translateY(5px) rotate(-3.125deg);
+  transform: translateY(-5px) rotate(-3.125deg);
 }
 
 .hand-card:nth-child(5):hover .hand-card-face {
@@ -160,7 +159,7 @@ code {
   top: -175px;
 }
 .hand-card:nth-child(6) .hand-card-face {
-  transform: translateY(5px) rotate(3.125deg);
+  transform: translateY(-5px) rotate(3.125deg);
 }
 
 .hand-card:nth-child(6):hover .hand-card-face {
@@ -175,7 +174,7 @@ code {
   top: -175px;
 }
 .hand-card:nth-child(7) .hand-card-face {
-  transform: translateY(15px) rotate(9.375deg);
+  transform: translateY(5px) rotate(9.375deg);
 }
 
 .hand-card:nth-child(7):hover .hand-card-face {
@@ -205,7 +204,7 @@ code {
   top: -175px;
 }
 .hand-card:nth-child(9) .hand-card-face {
-  transform: translateY(35px) rotate(21.875deg);
+  transform: translateY(55px) rotate(21.875deg);
 }
 
 .hand-card:nth-child(9):hover .hand-card-face {
@@ -220,7 +219,7 @@ code {
   top: -175px;
 }
 .hand-card:nth-child(10) .hand-card-face {
-  transform: translateY(45px) rotate(28.125deg);
+  transform: translateY(85px) rotate(28.125deg);
 }
 
 .hand-card:nth-child(10):hover .hand-card-face {
@@ -237,7 +236,7 @@ code {
 
 .card-image-container {
   border: 1px solid white;
-  height: 75vh;
+  height: 70vh;
   width: 90%;
   margin: 20px auto;
   display: flex;

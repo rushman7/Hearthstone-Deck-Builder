@@ -4,8 +4,7 @@ import {
   FETCH_CARDS_FAILURE,
   ADD_PLAYER_HAND,
   REMOVE_PLAYER_HAND,
-  NEXT_PAGE,
-  PREV_PAGE
+  CHANGE_PAGE
 } from '../actions';
 
 const initialState = {
@@ -70,15 +69,10 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         playerHand: state.playerHand.filter(card => card.dbfId !== action.payload)
       }
-    case NEXT_PAGE:
+    case CHANGE_PAGE:
       return {
         ...state,
-        currPage: state.currPage + 1,
-      }
-    case PREV_PAGE:
-      return {
-        ...state,
-        currPage: state.currPage - 1,
+        currPage: action.payload
       }
     default:
       return state;

@@ -6,6 +6,11 @@ const PlayerHand = props => {
   const removePlayerHand = id => {
     props.removePlayerHand(id)
   }
+
+  const addDefaultSrc = e => {
+    e.target.src = 'https://i.imgur.com/NegDK4H.png'
+  }
+
   return (
     <div className="hand-cards">
       {
@@ -14,6 +19,7 @@ const PlayerHand = props => {
         <div className="hand-card" key={card.dbfId} onClick={() => removePlayerHand(card.dbfId)}>
           <div className="hand-card-face">
             <img 
+              onError={addDefaultSrc}
               src={card.img} 
               alt={card.name} 
               className="hand-card-label"
