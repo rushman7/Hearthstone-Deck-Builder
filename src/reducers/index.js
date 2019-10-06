@@ -45,9 +45,7 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         error: '',
         isFetching: false,
-        cards: {
-          Classic: action.payload
-        },
+        cards: action.payload,
       }
     case FETCH_CARDS_FAILURE:
       return {

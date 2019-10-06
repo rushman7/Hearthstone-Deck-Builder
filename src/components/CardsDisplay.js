@@ -3,6 +3,15 @@ import { connect } from 'react-redux'
 import PaginationPage from './PaginationPage';
 
 const CardsDisplay = props => {
+  // const allCards = () => {
+  //   var total = [];
+  //   for (let set in props.cards) {
+  //     total = total.concat(props.cards[set])
+  //   }
+  //   console.log(total);
+  //   return total;
+  // }
+
   let currPageCards = props.cards.Classic.slice((props.currPage * 10 ) - 10, props.currPage * 10)
 
   const addDefaultSrc = e => {
@@ -24,6 +33,7 @@ const CardsDisplay = props => {
         }
       </div>
       <PaginationPage classic={props.cards.Classic}/>
+
     </div>
   )
 }

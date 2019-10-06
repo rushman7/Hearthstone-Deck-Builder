@@ -6,7 +6,7 @@ import CardsDisplay from './components/CardsDisplay';
 function App(props) {
   useEffect(() => {
     props.fetchHSCards()
-  })
+  }, [])
 
   return (
     <div className="App">
