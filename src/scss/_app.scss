@@ -21,8 +21,6 @@ code {
   min-height: 100vh;
   overflow: hidden;
   color: black;
-  display: flex;
-  flex-direction: row;
 }
 
 .error {
@@ -33,4 +31,10 @@ code {
   border-radius: .4rem;
   max-width: 7rem;
   margin: 1.6rem auto;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

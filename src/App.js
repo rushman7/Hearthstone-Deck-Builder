@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchHSCards } from './actions/index';
 import CardsDisplay from './components/CardsDisplay';
 import DeckList from './components/DeckList';
+import { Logo } from './components/Logo';
 
 function App(props) {
   useEffect(() => {
@@ -11,9 +12,12 @@ function App(props) {
 
   return (
     <div className="App">
-      <CardsDisplay />
-      <DeckList />
-      {props.error && <p className="error">{props.error}</p>}
+      <Logo />
+      <div className="container">
+        <CardsDisplay />
+        <DeckList />
+        {props.error && <p className="error">{props.error}</p>}
+      </div>
     </div>
   );
 }

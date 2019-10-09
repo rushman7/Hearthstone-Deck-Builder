@@ -7,9 +7,9 @@ const DeckList = props => {
     <div className="deck-list-cont">
       {
         props.currDeck.map(card => 
-          <div key={card.cardId}>
-            <img src={card.img} alt={card.name} />
+          <div key={card.cardId} className="deck-card-cont">
             <h2>{card.name}</h2>
+            <img src={card.img} alt={card.name} />
           </div>)
       }
     </div>

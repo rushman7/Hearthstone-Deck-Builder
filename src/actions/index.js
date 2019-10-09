@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const FETCH_CARDS_START = 'FETCH_CARDS_START';
 export const FETCH_CARDS_SUCCESS = 'FETCH_CARDS_SUCCESS';
-export const FETCH_CARDS_FAILURE = 'FETCH_CARDS_FAILURE';
+export const ERROR = 'ERROR';
 
 export const CHANGE_PAGE = 'CHANGE_PAGE';
 export const ADD_TO_DECK = 'ADD_TO_DECK';
@@ -21,7 +21,7 @@ export const fetchHSCards = () => dispatch => {
     })
     .catch(err => {
       dispatch({ 
-        type: FETCH_CARDS_FAILURE, 
+        type: ERROR, 
         payload: err 
       })
     });

@@ -1,36 +1,39 @@
-.card-image-container {
-  width: 75%;
-  height: 80vh;
-  margin: 2rem auto;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  overflow: auto;
-  padding: 2rem 2rem 4rem 2rem;
+.card-display-container {
+  width: 60%;
 
-  @media screen and (max-width: $tablet) {
+  .card-image-container {
     width: 100%;
-    padding: 0rem;
-  }
-
-  @media screen and (max-width: $phone) {
-  }
-
-
-  .card-image {
-    width: auto;
-    height: 50%;
-    margin: -.8rem 0rem;
-    transition: 800ms cubic-bezier(0.19, 1, 0.22, 1) transform;
-
-    @media screen and (max-width: $phone) {
-      width: 45%;
-      height: auto;
-    }
-
-    &:hover {
-      transform: scale(1.2);
-    }    
-  }
+    height: 70vh;
+    margin: 2rem 5% 2rem 25%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    overflow: auto;
+    padding: 0rem 2rem 4rem 2rem;
   
+    @media screen and (max-width: $tablet) {
+      width: 100%;
+      padding: 0rem;
+    }
+  
+    @media screen and (max-width: $phone) {
+    }
+  
+  
+    .card-image {
+      width: auto;
+      height: 50%;
+      margin: -.8rem 0rem;
+      transition: 800ms cubic-bezier(0.19, 1, 0.22, 1) transform;
+  
+      @media screen and (max-width: $phone) {
+        width: 45%;
+        height: auto;
+      }
+  
+      &:hover {
+        transform: scale(1.2);
+      }    
+    }
+  }
 }

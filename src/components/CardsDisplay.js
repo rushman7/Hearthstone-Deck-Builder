@@ -16,7 +16,7 @@ const CardsDisplay = props => {
   }
 
   return (
-    <div>
+    <div className="card-display-container">
       <div className="card-image-container">
         {
           currPageCards.map(card => 
