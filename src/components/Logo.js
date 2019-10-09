@@ -3,7 +3,7 @@ import logo from '../images/logo.png';
 
 export const Logo = () => {
   return (
-    <div class="Logo">
+    <div className="Logo">
       <img src={logo} alt="" />
     </div>
   )

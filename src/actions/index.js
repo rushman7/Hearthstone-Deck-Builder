@@ -6,6 +6,7 @@ export const ERROR = 'ERROR';
 
 export const CHANGE_PAGE = 'CHANGE_PAGE';
 export const ADD_TO_DECK = 'ADD_TO_DECK';
+export const REMOVE_FROM_DECK = 'REMOVE_FROM_DECK';
 
 export const fetchHSCards = () => dispatch => {
   dispatch({ type: FETCH_CARDS_START });
@@ -34,9 +35,17 @@ export const changePage = currPage => {
   }
 }
 
-export const addToDeck = card => {
+export const addToDeck = (card, id) => {
+  console.log(id)
   return {
     type: ADD_TO_DECK,
+    payload: { ...card, id } 
+  }
+}
+
+export const removeFromDeck = card => {
+  return {
+    type: REMOVE_FROM_DECK,
     payload: card
   }
 }

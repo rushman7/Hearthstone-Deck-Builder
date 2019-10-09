@@ -24,13 +24,19 @@ code {
 }
 
 .error {
-  padding: 1.6rem;
+  padding: 1rem;
   background-color: #ffb7b7;
   color: red;
   border: solid .1rem #f39595;
   border-radius: .4rem;
-  max-width: 7rem;
+  width: 20rem;
+  height: auto;
   margin: 1.6rem auto;
+  font-size: 1.5rem;
+  position: absolute;
+  top: 3rem;
+  left: 10rem;
+  transition: 1s;
 }
 
 .container {

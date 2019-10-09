@@ -52,12 +52,33 @@ export const rootReducer = (state = initialState, action) => {
     case actionType.CHANGE_PAGE:
       return {
         ...state,
+        error: '',
         currPage: action.payload
       }
     case actionType.ADD_TO_DECK:
+      console.log(state.currDeck)
+      if (state.currDeck.filter(card => card.name === action.payload.name).length === 2) {
+        return {
+          ...state,
+          error: `You already have two copies of ${action.payload.name}.`,
+        }
+      } else if (state.currDeck.length >= 30) {
+        return {
+          ...state,
+          error: 'Your deck is full.',
+        }
+      } else {
+        return {
+          ...state,
+          error: '',
+          currDeck: [...state.currDeck, action.payload],
+        }
+      }
+    case actionType.REMOVE_FROM_DECK:
       return {
         ...state,
-        currDeck: [...state.currDeck, action.payload]
+        error: '',
+        currDeck: state.currDeck.filter(card => card !== action.payload)
       }
     default:
       return state;

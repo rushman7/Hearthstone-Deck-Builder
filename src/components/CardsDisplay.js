@@ -12,7 +12,8 @@ const CardsDisplay = props => {
 
   const addToDeck = (e, card) => {
     e.preventDefault();
-    props.addToDeck(card)
+    let id = Date.now();
+    props.addToDeck(card, id)
   }
 
   return (
