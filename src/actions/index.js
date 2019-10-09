@@ -4,7 +4,8 @@ export const FETCH_CARDS_START = 'FETCH_CARDS_START';
 export const FETCH_CARDS_SUCCESS = 'FETCH_CARDS_SUCCESS';
 export const FETCH_CARDS_FAILURE = 'FETCH_CARDS_FAILURE';
 
-export const CHANGE_PAGE = 'CHANGE_PAGE'
+export const CHANGE_PAGE = 'CHANGE_PAGE';
+export const ADD_TO_DECK = 'ADD_TO_DECK';
 
 export const fetchHSCards = () => dispatch => {
   dispatch({ type: FETCH_CARDS_START });
@@ -16,7 +17,6 @@ export const fetchHSCards = () => dispatch => {
       }
     })
     .then(res => {
-      console.log(res.data)
       dispatch({ type: FETCH_CARDS_SUCCESS, payload: res.data})
     })
     .catch(err => {
@@ -31,5 +31,12 @@ export const changePage = currPage => {
   return {
     type: CHANGE_PAGE,
     payload: currPage
+  }
+}
+
+export const addToDeck = card => {
+  return {
+    type: ADD_TO_DECK,
+    payload: card
   }
 }

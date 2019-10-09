@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchHSCards } from './actions/index';
 import CardsDisplay from './components/CardsDisplay';
+import DeckList from './components/DeckList';
 
 function App(props) {
   useEffect(() => {
@@ -11,6 +12,7 @@ function App(props) {
   return (
     <div className="App">
       <CardsDisplay />
+      <DeckList />
       {props.error && <p className="error">{props.error}</p>}
     </div>
   );

@@ -1,9 +1,4 @@
-import { 
-  FETCH_CARDS_START,
-  FETCH_CARDS_SUCCESS,
-  FETCH_CARDS_FAILURE,
-  CHANGE_PAGE,
-} from '../actions';
+import * as actionType from '../actions';
 
 const initialState = {
   cards: {
@@ -29,34 +24,40 @@ const initialState = {
   error: '',
   isFetching: false,
   currPage: 1,
-  totalPages: 25
+  totalPages: 25,
+  currDeck: [],
 }
 
 export const rootReducer = (state = initialState, action) => {
   switch(action.type) { 
-    case FETCH_CARDS_START:
+    case actionType.FETCH_CARDS_START:
       return {
         ...state,
         error: '',
         isFetching: true
       }
-    case FETCH_CARDS_SUCCESS:
+    case actionType.FETCH_CARDS_SUCCESS:
       return {
         ...state,
         error: '',
         isFetching: false,
         cards: action.payload,
       }
-    case FETCH_CARDS_FAILURE:
+    case actionType.FETCH_CARDS_FAILURE:
       return {
         ...state,
         error: action.payload,
         isFetching: false
       }
-    case CHANGE_PAGE:
+    case actionType.CHANGE_PAGE:
       return {
         ...state,
         currPage: action.payload
+      }
+    case actionType.ADD_TO_DECK:
+      return {
+        ...state,
+        currDeck: [...state.currDeck, action.payload]
       }
     default:
       return state;

@@ -1,21 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import { addToDeck } from '../actions';
 import PaginationPage from './PaginationPage';
 
 const CardsDisplay = props => {
-  // const allCards = () => {
-  //   var total = [];
-  //   for (let set in props.cards) {
-  //     total = total.concat(props.cards[set])
-  //   }
-  //   console.log(total);
-  //   return total;
-  // }
-
   let currPageCards = props.cards.Classic.slice((props.currPage * 10 ) - 10, props.currPage * 10)
 
   const addDefaultSrc = e => {
     e.target.src = 'https://i.imgur.com/NegDK4H.png'
+  }
+
+  const addToDeck = (e, card) => {
+    e.preventDefault();
+    props.addToDeck(card)
   }
 
   return (
@@ -29,6 +26,7 @@ const CardsDisplay = props => {
             alt={card.name} 
             key={card.cardId}
             className="card-image"
+            onClick={(e) => addToDeck(e, card)}
           />)
         }
       </div>
@@ -44,4 +42,4 @@ const mapStateToProps = state => ({
   currPage: state.currPage,
 })
 
-export default connect(mapStateToProps, {})(CardsDisplay);
+export default connect(mapStateToProps, { addToDeck })(CardsDisplay);

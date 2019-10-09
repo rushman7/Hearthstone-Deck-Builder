@@ -5,6 +5,7 @@ import { Pagination } from 'semantic-ui-react'
 
 const PaginationPage = (props) => {
   const handlePaginationChange = (e, currPage) => {
+    e.preventDefault();
     props.changePage(currPage.activePage)
   }
 
