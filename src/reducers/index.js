@@ -56,7 +56,6 @@ export const rootReducer = (state = initialState, action) => {
         currPage: action.payload
       }
     case actionType.ADD_TO_DECK:
-      console.log(state.currDeck)
       if (state.currDeck.filter(card => card.name === action.payload.name).length === 2) {
         return {
           ...state,
