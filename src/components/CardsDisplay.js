@@ -24,7 +24,9 @@ const CardsDisplay = props => {
       <SortBySet />
       <div className="card-image-container">
         {
-          currPageCards.map(card => 
+          props.currSet.length === 0
+          ? <p className="choose-message">Choose a set to display cards</p>
+          : currPageCards.map(card => 
           <img 
             onError={addDefaultSrc}
             src={card.img} 
