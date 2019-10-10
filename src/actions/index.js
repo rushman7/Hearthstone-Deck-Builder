@@ -25,7 +25,6 @@ export const fetchHSCards = () => dispatch => {
           data = Object.assign(data, { [set]: res.data[set]})
         }
       }
-      console.log(data)
       dispatch({ type: FETCH_CARDS_SUCCESS, payload: data})
     })
     .catch(err => {
@@ -57,7 +56,9 @@ export const removeFromDeck = card => {
   }
 }
 
-export const sortBySet = set => ({
-  type: 'SORT_BY_SET',
-  payload: set
-});
+export const sortBySet = set => {
+  return {
+    type: 'SORT_BY_SET',
+    payload: set
+  }
+};

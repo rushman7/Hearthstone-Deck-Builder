@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { addToDeck } from '../actions';
+import { addToDeck, sortBySet } from '../actions';
 import { makeStyles } from '@material-ui/core/styles';
 import PaginationPage from './PaginationPage';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -10,7 +10,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 const CardsDisplay = props => {
   if (props.cards) {
-    var currPageCards = props.cards.Classic.slice((props.currPage * 10 ) - 10, props.currPage * 10);
+    var currPageCards = props.currSet.slice((props.currPage * 10 ) - 10, props.currPage * 10);
   }
 
   const addDefaultSrc = e => {
@@ -31,22 +31,27 @@ const CardsDisplay = props => {
     formControl: {
       margin: theme.spacing(1),
       minWidth: 120,
-    },
-    selectEmpty: {
-      marginTop: theme.spacing(2),
-    },
+    }
   }));
 
   const classes = useStyles();
+
+  const sortSet = (e) => {
+    e.preventDefault();
+    props.sortBySet(e.target.value)
+  }
 
   return (
     <div className="card-display-container">
       <FormControl className={classes.formControl}>
         <InputLabel>Sort by Set</InputLabel>
-          <Select>
+          <Select
+            value={props.currSetName}
+            onChange={sortSet}
+          >
             { 
               Object.keys(props.cards).map(function(keyName, keyIndex) {
-                return <MenuItem value={keyName}>{keyName}</MenuItem>
+                return <MenuItem key={keyIndex} value={keyName}>{keyName}</MenuItem>
               })
             }
         </Select>
@@ -72,6 +77,8 @@ const CardsDisplay = props => {
 const mapStateToProps = state => ({
   cards: state.cards,
   currPage: state.currPage,
+  currSet: state.currSet,
+  currSetName: state.currSetName,
 })
 
-export default connect(mapStateToProps, { addToDeck })(CardsDisplay);
+export default connect(mapStateToProps, { addToDeck, sortBySet })(CardsDisplay);

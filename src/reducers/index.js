@@ -7,9 +7,10 @@ const initialState = {
   error: '',
   isFetching: false,
   currPage: 1,
-  totalPages: 25,
+  totalPages: 1,
   currDeck: [],
-  sortBySet: '',
+  currSet: [],
+  currSetName: '',
 }
 
 export const rootReducer = (state = initialState, action) => {
@@ -40,7 +41,6 @@ export const rootReducer = (state = initialState, action) => {
         currPage: action.payload
       }
     case actionType.ADD_TO_DECK:
-      console.log(state.cards)
       if (state.currDeck.filter(card => card.name === action.payload.name).length === 2) {
         return {
           ...state,
@@ -65,9 +65,12 @@ export const rootReducer = (state = initialState, action) => {
         currDeck: state.currDeck.filter(card => card !== action.payload)
       }
     case actionType.SORT_BY_SET:
+      console.log()
       return {
         ...state,
-        sortBySet: action.payload
+        currSet: state.cards[action.payload],
+        currSetName: action.payload,
+        totalPages: Math.ceil(state.cards[action.payload].length / 10)
       }
     default:
       return state;
