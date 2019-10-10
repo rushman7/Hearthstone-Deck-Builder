@@ -9,6 +9,7 @@ const initialState = {
   currPage: 1,
   totalPages: 25,
   currDeck: [],
+  sortBySet: '',
 }
 
 export const rootReducer = (state = initialState, action) => {
@@ -62,6 +63,11 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         error: '',
         currDeck: state.currDeck.filter(card => card !== action.payload)
+      }
+    case actionType.SORT_BY_SET:
+      return {
+        ...state,
+        sortBySet: action.payload
       }
     default:
       return state;

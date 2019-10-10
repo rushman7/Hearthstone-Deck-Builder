@@ -7,6 +7,7 @@ export const ERROR = 'ERROR';
 export const CHANGE_PAGE = 'CHANGE_PAGE';
 export const ADD_TO_DECK = 'ADD_TO_DECK';
 export const REMOVE_FROM_DECK = 'REMOVE_FROM_DECK';
+export const SORT_BY_SET = 'SORT_BY_SET';
 
 export const fetchHSCards = () => dispatch => {
   dispatch({ type: FETCH_CARDS_START });
@@ -55,3 +56,8 @@ export const removeFromDeck = card => {
     payload: card
   }
 }
+
+export const sortBySet = set => ({
+  type: 'SORT_BY_SET',
+  payload: set
+});
