@@ -4,7 +4,9 @@ import { addToDeck } from '../actions';
 import PaginationPage from './PaginationPage';
 
 const CardsDisplay = props => {
-  let currPageCards = props.cards.Classic.slice((props.currPage * 10 ) - 10, props.currPage * 10)
+  if (props.cards.Classic) {
+    var currPageCards = props.cards.Classic.slice((props.currPage * 10 ) - 10, props.currPage * 10)
+  }
 
   const addDefaultSrc = e => {
     e.target.src = 'https://i.imgur.com/NegDK4H.png'
@@ -32,14 +34,12 @@ const CardsDisplay = props => {
         }
       </div>
       <PaginationPage classic={props.cards.Classic}/>
-
     </div>
   )
 }
 
 const mapStateToProps = state => ({
   cards: state.cards,
-  error: state.error,
   currPage: state.currPage,
 })
 

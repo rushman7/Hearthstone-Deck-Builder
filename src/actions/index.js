@@ -18,7 +18,14 @@ export const fetchHSCards = () => dispatch => {
       }
     })
     .then(res => {
-      dispatch({ type: FETCH_CARDS_SUCCESS, payload: res.data})
+      let data = {}
+      for (let set in res.data) {
+        if (res.data[set].length > 0) {
+          data = Object.assign(data, { [set]: res.data[set]})
+        }
+      }
+      console.log(data)
+      dispatch({ type: FETCH_CARDS_SUCCESS, payload: data})
     })
     .catch(err => {
       dispatch({ 
@@ -36,7 +43,6 @@ export const changePage = currPage => {
 }
 
 export const addToDeck = (card, id) => {
-  console.log(id)
   return {
     type: ADD_TO_DECK,
     payload: { ...card, id } 

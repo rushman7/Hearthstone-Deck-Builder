@@ -2,24 +2,7 @@ import * as actionType from '../actions';
 
 const initialState = {
   cards: {
-    'Basic': [],
-    'Classic': [],
-    'Blackrock Mountain': [],
-    'Goblins vs Gnomes': [],
-    'Hall of Fame': [],
-    "Journey to Un'Goro": [],
-    'Knights of the Frozen Throne': [],
-    'Kobolds & Catacombs': [],
-    'Mean Streets of Gadgetzan': [],
-    'One Night in Karazhan': [],
-    "Rastakhan's Rumble": [],
-    'Rise of Shadows': [],
-    'Saviors of Uldum': [],
-    'The Boomsday Project': [],
-    'The Grand Tournament': [],
-    'The League of Explorers': [],
-    'The Witchwood': [],
-    'Whispers of the Old Gods': [],
+    Classic: []
   },
   error: '',
   isFetching: false,
@@ -56,6 +39,7 @@ export const rootReducer = (state = initialState, action) => {
         currPage: action.payload
       }
     case actionType.ADD_TO_DECK:
+      console.log(state.cards)
       if (state.currDeck.filter(card => card.name === action.payload.name).length === 2) {
         return {
           ...state,
