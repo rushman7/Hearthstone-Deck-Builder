@@ -12,6 +12,10 @@ class App extends Component {
   }
 
   render() {
+    if (this.props.isFetching) {
+      return <p>Data is loading...</p>
+    }
+
     return (
       <div className="App">
         <ErrorMessage />
@@ -26,7 +30,8 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  cards: state.cards
+  cards: state.cards,
+  isFetching: state.isFetching
 })
 
 export default connect(mapStateToProps, {fetchHSCards})(App);
