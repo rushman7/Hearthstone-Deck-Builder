@@ -1,17 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { addToDeck, sortBySet } from '../actions';
-import { makeStyles } from '@material-ui/core/styles';
+import { addToDeck } from '../actions';
 import PaginationPage from './PaginationPage';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
+import SortBySet from './SortBySet';
 
 const CardsDisplay = props => {
-  if (props.cards) {
+  if (props.currSet) {
     var currPageCards = props.currSet.slice((props.currPage * 10 ) - 10, props.currPage * 10);
-  }
+  } 
 
   const addDefaultSrc = e => {
     e.target.src = 'https://i.imgur.com/NegDK4H.png'
@@ -23,39 +19,9 @@ const CardsDisplay = props => {
     props.addToDeck(card, id)
   }
 
-  const useStyles = makeStyles(theme => ({
-    root: {
-      display: 'flex',
-      flexWrap: 'wrap',
-    },
-    formControl: {
-      margin: theme.spacing(1),
-      minWidth: 120,
-    }
-  }));
-
-  const classes = useStyles();
-
-  const sortSet = (e) => {
-    e.preventDefault();
-    props.sortBySet(e.target.value)
-  }
-
   return (
     <div className="card-display-container">
-      <FormControl className={classes.formControl}>
-        <InputLabel>Sort by Set</InputLabel>
-          <Select
-            value={props.currSetName}
-            onChange={sortSet}
-          >
-            { 
-              Object.keys(props.cards).map(function(keyName, keyIndex) {
-                return <MenuItem key={keyIndex} value={keyName}>{keyName}</MenuItem>
-              })
-            }
-        </Select>
-      </FormControl>
+      <SortBySet />
       <div className="card-image-container">
         {
           currPageCards.map(card => 
@@ -69,16 +35,14 @@ const CardsDisplay = props => {
           />)
         }
       </div>
-      <PaginationPage classic={props.cards.Classic}/>
+      <PaginationPage />
     </div>
   )
 }
 
 const mapStateToProps = state => ({
-  cards: state.cards,
   currPage: state.currPage,
   currSet: state.currSet,
-  currSetName: state.currSetName,
 })
 
-export default connect(mapStateToProps, { addToDeck, sortBySet })(CardsDisplay);
+export default connect(mapStateToProps, { addToDeck })(CardsDisplay);
