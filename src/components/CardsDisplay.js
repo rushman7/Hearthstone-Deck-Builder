@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { addToDeck } from '../actions';
 import PaginationPage from './PaginationPage';
 import SortBySet from './SortBySet';
+import SortByCost from './SortByCost';
 
 const CardsDisplay = props => {
   if (props.currSet) {
@@ -22,6 +23,7 @@ const CardsDisplay = props => {
   return (
     <div className="card-display-container">
       <SortBySet />
+      <SortByCost />
       <div className="card-image-container">
         {
           props.currSet.length === 0
@@ -37,7 +39,11 @@ const CardsDisplay = props => {
           />)
         }
       </div>
-      <PaginationPage />
+      {
+        props.currSet.length === 0
+        ? <p></p>
+        : <PaginationPage />
+      }
     </div>
   )
 }

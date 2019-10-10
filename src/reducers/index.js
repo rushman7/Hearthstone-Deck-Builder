@@ -11,6 +11,7 @@ const initialState = {
   currDeck: [],
   currSet: [],
   currSetName: '',
+  filteredSet: [],
 }
 
 export const rootReducer = (state = initialState, action) => {
@@ -65,12 +66,28 @@ export const rootReducer = (state = initialState, action) => {
         currDeck: state.currDeck.filter(card => card !== action.payload)
       }
     case actionType.SORT_BY_SET:
-      console.log()
       return {
         ...state,
         currSet: state.cards[action.payload],
         currSetName: action.payload,
-        totalPages: Math.ceil(state.cards[action.payload].length / 10)
+        totalPages: Math.ceil(state.cards[action.payload].length / 10),
+        error: '',
+      }
+    case actionType.SORT_BT_COST:
+      console.log(action.payload)
+      if (action.payload === 'All') {
+        return {
+          ...state,
+          currSet: state.filteredSet,
+          error: '',
+        }
+      } else {
+        return {
+          ...state,
+          filteredSet: state.currSet,
+          currSet: state.currSet.filter(card => parseInt(card.cost) === action.payload),
+          error: '',
+        }
       }
     default:
       return state;

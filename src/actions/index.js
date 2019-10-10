@@ -8,6 +8,7 @@ export const CHANGE_PAGE = 'CHANGE_PAGE';
 export const ADD_TO_DECK = 'ADD_TO_DECK';
 export const REMOVE_FROM_DECK = 'REMOVE_FROM_DECK';
 export const SORT_BY_SET = 'SORT_BY_SET';
+export const SORT_BT_COST = 'SORT_BT_COST'
 
 export const fetchHSCards = () => dispatch => {
   dispatch({ type: FETCH_CARDS_START });
@@ -58,7 +59,15 @@ export const removeFromDeck = card => {
 
 export const sortBySet = set => {
   return {
-    type: 'SORT_BY_SET',
+    type: SORT_BY_SET,
     payload: set
   }
 };
+
+export const sortByCost = cost => {
+  console.log(cost)
+  return {
+    type: SORT_BT_COST,
+    payload: cost
+  }
+}
