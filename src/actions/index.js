@@ -9,6 +9,7 @@ export const ADD_TO_DECK = 'ADD_TO_DECK';
 export const REMOVE_FROM_DECK = 'REMOVE_FROM_DECK';
 export const SORT_BY_SET = 'SORT_BY_SET';
 export const SORT_BT_COST = 'SORT_BT_COST'
+export const SAVE_DECK = 'SAVE_DECK';
 
 export const fetchHSCards = () => dispatch => {
   dispatch({ type: FETCH_CARDS_START });
@@ -68,5 +69,12 @@ export const sortByCost = cost => {
   return {
     type: SORT_BT_COST,
     payload: cost
+  }
+}
+
+export const saveDeck = (deck, name) => {
+  return {
+    type: SAVE_DECK,
+    payload: { name, deck }
   }
 }

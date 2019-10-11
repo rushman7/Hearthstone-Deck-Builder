@@ -12,6 +12,7 @@ const initialState = {
   currSet: [],
   currSetName: '',
   currCost: '',
+  savedDecks: [],
 }
 
 export const rootReducer = (state = initialState, action) => {
@@ -100,6 +101,12 @@ export const rootReducer = (state = initialState, action) => {
           totalPages: Math.ceil(state.cards[state.currSetName].filter(card => parseInt(card.cost) === action.payload).length / 10),
           error: '',
         }
+      }
+    case actionType.SAVE_DECK:
+      console.log(action.payload)
+      return {
+        ...state,
+        savedDecks: [...state.savedDecks, action.payload]
       }
     default:
       return state;

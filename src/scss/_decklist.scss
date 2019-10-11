@@ -5,6 +5,10 @@
   overflow-y: scroll;
   height: 72vh;
 
+  @media screen and (max-width: $tablet) {
+    margin: 2rem .5rem 4rem 0rem;
+  }
+
   p {
     color: rgb(255, 255, 255);
     font-size: 1.5rem;
