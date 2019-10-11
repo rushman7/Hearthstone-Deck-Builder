@@ -72,15 +72,24 @@ export const rootReducer = (state = initialState, action) => {
         currSetName: action.payload,
         totalPages: Math.ceil(state.cards[action.payload].length / 10),
         error: '',
+        currCost: '',
       }
     case actionType.SORT_BT_COST:
-      console.log(action.payload)
       if (action.payload === 'All') {
         return {
           ...state,
           currCost: action.payload,
           currSet: state.cards[state.currSetName],
           totalPages: Math.ceil(state.cards[state.currSetName].length / 10),
+          error: '',
+        }
+      } else if (action.payload === '7+') {
+        console.log(action.payload)
+        return {
+          ...state,
+          currSet: state.cards[state.currSetName].filter(card => card.cost > 10),
+          currCost: action.payload,
+          totalPages: Math.ceil(state.cards[state.currSetName].filter(card => parseInt(card.cost) === action.payload).length / 10),
           error: '',
         }
       } else {
