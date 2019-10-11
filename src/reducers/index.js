@@ -11,7 +11,7 @@ const initialState = {
   currDeck: [],
   currSet: [],
   currSetName: '',
-  filteredSet: [],
+  currCost: '',
 }
 
 export const rootReducer = (state = initialState, action) => {
@@ -78,14 +78,17 @@ export const rootReducer = (state = initialState, action) => {
       if (action.payload === 'All') {
         return {
           ...state,
-          currSet: state.filteredSet,
+          currCost: action.payload,
+          currSet: state.cards[state.currSetName],
+          totalPages: Math.ceil(state.cards[state.currSetName].length / 10),
           error: '',
         }
       } else {
         return {
           ...state,
-          filteredSet: state.currSet,
-          currSet: state.currSet.filter(card => parseInt(card.cost) === action.payload),
+          currSet: state.cards[state.currSetName].filter(card => parseInt(card.cost) === action.payload),
+          currCost: action.payload,
+          totalPages: Math.ceil(state.cards[state.currSetName].filter(card => parseInt(card.cost) === action.payload).length / 10),
           error: '',
         }
       }
