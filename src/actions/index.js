@@ -65,7 +65,6 @@ export const sortBySet = set => {
 };
 
 export const sortByCost = cost => {
-  console.log(cost)
   return {
     type: SORT_BT_COST,
     payload: cost

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { sortBySet } from '../actions';
+import { sortBySet, changePage } from '../actions';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
@@ -23,7 +23,8 @@ const SortBySet = props => {
 
   const sortSet = (e) => {
     e.preventDefault();
-    props.sortBySet(e.target.value)
+    props.sortBySet(e.target.value);
+    props.changePage(1);
   }
 
   return (
@@ -49,6 +50,6 @@ const mapStateToProps = state => ({
   currSetName: state.currSetName,
 })
 
-export default connect(mapStateToProps, { sortBySet })(SortBySet);
+export default connect(mapStateToProps, { sortBySet, changePage })(SortBySet);
 
 

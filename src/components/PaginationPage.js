@@ -13,7 +13,7 @@ const PaginationPage = (props) => {
     <div>
       <Pagination 
         totalPages={props.totalPages} 
-        defaultActivePage={props.currPage}
+        activePage={props.currPage}
         onPageChange={handlePaginationChange}
       />
     </div>

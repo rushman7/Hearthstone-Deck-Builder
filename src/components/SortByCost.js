@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { sortByCost } from '../actions';
+import { sortByCost, changePage } from '../actions';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
@@ -24,6 +24,7 @@ const SortByCost = props => {
   const sortCost = (e) => {
     e.preventDefault();
     props.sortByCost(e.target.value)
+    props.changePage(1)
   }
 
   const costArray = [0,1,2,3,4,5,6,7,'All']
@@ -32,10 +33,10 @@ const SortByCost = props => {
     <FormControl className={classes.formControl}>
       <InputLabel>Sort by Cost</InputLabel>
         <Select
-          value={props.currSetName}
+          value={props.currCost}
           onChange={sortCost}
         >
-        {costArray.map((cost,index) => <MenuItem value={cost} key={index}>{cost}</MenuItem>)}
+        {costArray.map(cost => <MenuItem value={cost} key={cost}>{cost}</MenuItem>)}
       </Select>
     </FormControl>
   )
@@ -45,8 +46,9 @@ const mapStateToProps = state => ({
   cards: state.cards,
   currSet: state.currSet,
   currSetName: state.currSetName,
+  currCost: state.currCost,
 })
 
-export default connect(mapStateToProps, { sortByCost })(SortByCost);
+export default connect(mapStateToProps, { sortByCost, changePage })(SortByCost);
 
 
