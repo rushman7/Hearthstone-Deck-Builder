@@ -1,11 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const ErrorMessage = props => {
+  const notify = () => toast(props.error);
   return (
     <div>
-      {props.error && <p className='error'>{props.error}</p>}
+      {props.error && <p>{notify()}</p>}
+      <ToastContainer />
     </div>
   );
 }
