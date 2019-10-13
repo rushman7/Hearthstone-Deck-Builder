@@ -5,6 +5,8 @@ import CardsDisplay from './components/CardsDisplay';
 import DeckList from './components/DeckList';
 import { Logo } from './components/Logo';
 import ErrorMessage from './components/ErrorMessage';
+import { Route } from 'react-router-dom';
+import SavedDeckList from './components/SavedDeckList';
 
 class App extends Component {
   componentDidMount() {
@@ -24,6 +26,7 @@ class App extends Component {
           <CardsDisplay />
           <DeckList />
         </div>
+        <Route exact path="/Saved_Decks" components={SavedDeckList}/>
       </div>
     );
   }
