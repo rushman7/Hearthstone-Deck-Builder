@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux'
 import { removeFromDeck, saveDeck } from '../actions';
+import SavedDeckAmount from './SavedDeckAmount';
 
 const DeckList = props => {
   const [deckName, setDeckName] = useState('');
@@ -21,6 +22,7 @@ const DeckList = props => {
 
   return (
     <div>
+      <SavedDeckAmount currDeck={props.currDeck} />
       <div className="deck-list-cont">
         {
           props.currDeck.length === 0
