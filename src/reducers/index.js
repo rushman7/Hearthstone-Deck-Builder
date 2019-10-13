@@ -85,7 +85,6 @@ export const rootReducer = (state = initialState, action) => {
           error: '',
         }
       } else if (action.payload === '7+') {
-        console.log(action.payload)
         return {
           ...state,
           currSet: state.cards[state.currSetName].filter(card => card.cost > 10),
@@ -103,10 +102,15 @@ export const rootReducer = (state = initialState, action) => {
         }
       }
     case actionType.SAVE_DECK:
-      console.log(action.payload)
       return {
         ...state,
         savedDecks: [...state.savedDecks, action.payload]
+      }
+    case actionType.SET_CURR_TO_EDIT:
+      console.log(action.payload)
+      return {
+        ...state,
+        currDeck: action.payload.deck
       }
     default:
       return state;
