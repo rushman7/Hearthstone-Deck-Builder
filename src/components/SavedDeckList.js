@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 
 const SavedDeckList = props => {
   return (
-    <div>
+    <div className="saved-deck-cont">
       {props.savedDecks.map(deck => <p>{deck.name}</p>)}
     </div>
   )
 }
 
 const mapStateToProps = state => ({
-  savedDecks: state.savedDecks,
+  savedDecks: state.savedDecks
 })
 
 export default connect(mapStateToProps, {})(SavedDeckList);

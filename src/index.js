@@ -9,11 +9,19 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger'
 import thunk from 'redux-thunk';
 import { rootReducer } from './reducers';
+import { localState, saveState } from './persistance/index';
+
+const localData = localState();
 
 const store = createStore(
   rootReducer,
+  localData,
   applyMiddleware(thunk, logger)
 );
+
+store.subscribe(() => {
+  saveState(store.getState());
+})
 
 ReactDOM.render(
   <Router>

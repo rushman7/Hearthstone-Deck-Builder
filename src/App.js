@@ -23,10 +23,10 @@ class App extends Component {
         <ErrorMessage />
         <Logo />
         <div className="container">
-          <CardsDisplay />
-          <DeckList />
+          <Route exact path="/" component={CardsDisplay}/>
+          <Route exact path="/" component={DeckList}/>
         </div>
-        <Route exact path="/Saved_Decks" components={SavedDeckList}/>
+        <Route exact path="/Saved_Decks" component={SavedDeckList}/>
       </div>
     );
   }
