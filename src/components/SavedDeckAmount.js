@@ -5,7 +5,6 @@ const SavedDeckAmount = props => {
   return (
     <div>
       <Link to="/Saved_Decks"><button>Saved Decks</button></Link>
-      {props.currDeck.length} / 30
     </div>
   )
 }

@@ -5,6 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  ::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+  }
   font-size: 62.5%;
 }
 
@@ -27,4 +31,8 @@ code {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  @media screen and  (max-width: $phone) {
+    flex-direction: column;
+  }
 }

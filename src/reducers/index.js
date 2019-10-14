@@ -77,7 +77,12 @@ export const rootReducer = (state = initialState, action) => {
         currCost: '',
       }
     case actionType.SORT_BT_COST:
-      if (action.payload === 'All') {
+      if (state.playerClass === '') {
+        return {
+          ...state,
+          error: 'Please select a class.'
+        }
+      } else if (action.payload === 'All') {
         return {
           ...state,
           currCost: action.payload,

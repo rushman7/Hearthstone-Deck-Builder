@@ -21,8 +21,14 @@ const DeckList = props => {
   }
 
   return (
-    <div>
-      <SavedDeckAmount currDeck={props.currDeck} />
+    <div className='deck-cont'>
+      <div className="deck-top-cont">
+        <div>
+          <input type="text" value={deckName} onChange={changeName} placeholder='Set deck name...'/>
+          <button onClick={() => saveDeck(props.currDeck, deckName)}>Save Deck</button>
+        </div>
+        <p className="deck-total">{props.currDeck.length} / 30</p>
+      </div>
       <div className="deck-list-cont">
         {
           props.currDeck.length === 0
@@ -34,8 +40,7 @@ const DeckList = props => {
             </div>)
         }
       </div>
-      <input type="text" value={deckName} onChange={changeName}/>
-      <button onClick={() => saveDeck(props.currDeck, deckName)}>Save Deck</button>
+      <SavedDeckAmount currDeck={props.currDeck} />
     </div>
   )
 }

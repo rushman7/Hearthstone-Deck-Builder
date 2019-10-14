@@ -1,6 +1,10 @@
 .Logo {
-  width: 25rem;
-  margin: 0 auto -5rem auto;
+  width: 20vw;
+  margin: auto;
+
+  @media screen and (max-width: $phone) {
+    width: 80%;
+  }
 
   img {
     width: 100%;
