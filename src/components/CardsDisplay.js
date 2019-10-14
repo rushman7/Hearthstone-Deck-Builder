@@ -4,10 +4,13 @@ import { addToDeck } from '../actions';
 import PaginationPage from './PaginationPage';
 import SortBySet from './SortBySet';
 import SortByCost from './SortByCost';
+import SortByClass from './SortByClass';
 
 const CardsDisplay = props => {
   if (props.currSet) {
-    var currPageCards = props.currSet.slice((props.currPage * 10 ) - 10, props.currPage * 10);
+    var currPageCards = props.currSet
+      .filter(classType => classType.playerClass === props.currClass || classType.playerClass === 'Neutral')
+      .slice((props.currPage * 10 ) - 10, props.currPage * 10);
   } 
 
   const addDefaultSrc = e => {
@@ -22,6 +25,7 @@ const CardsDisplay = props => {
 
   return (
     <div className="card-display-container">
+      <SortByClass />
       <SortBySet />
       <SortByCost />
       <div className="card-image-container">
@@ -51,6 +55,7 @@ const CardsDisplay = props => {
 const mapStateToProps = state => ({
   currPage: state.currPage,
   currSet: state.currSet,
+  currClass: state.currClass,
 })
 
 export default connect(mapStateToProps, { addToDeck })(CardsDisplay);

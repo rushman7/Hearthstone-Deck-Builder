@@ -11,6 +11,7 @@ export const SORT_BY_SET = 'SORT_BY_SET';
 export const SORT_BT_COST = 'SORT_BT_COST';
 export const SAVE_DECK = 'SAVE_DECK';
 export const SET_CURR_TO_EDIT = 'SET_CURR_TO_EDIT';
+export const SET_CLASS = 'SET_CLASS';
 
 export const fetchHSCards = () => dispatch => {
   dispatch({ type: FETCH_CARDS_START });
@@ -84,5 +85,12 @@ export const setEditToCurr = deck => {
   return {
     type: SET_CURR_TO_EDIT,
     payload: deck
+  }
+}
+
+export const setClass = className => {
+  return {
+    type: SET_CLASS,
+    payload: className
   }
 }

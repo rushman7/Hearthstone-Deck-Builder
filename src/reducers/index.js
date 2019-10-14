@@ -13,6 +13,7 @@ const initialState = {
   currSetName: '',
   currCost: '',
   savedDecks: [],
+  currClass: ''
 }
 
 export const rootReducer = (state = initialState, action) => {
@@ -107,10 +108,15 @@ export const rootReducer = (state = initialState, action) => {
         savedDecks: [...state.savedDecks, action.payload]
       }
     case actionType.SET_CURR_TO_EDIT:
-      console.log(action.payload)
       return {
         ...state,
         currDeck: action.payload.deck
+      }
+    case actionType.SET_CLASS:
+      return {
+        ...state,
+        currClass: action.payload,
+        totalPages: Math.ceil(state.cards[state.currSetName].filter(card => card.playerClass === action.payload || card.playerClass === 'Neutral').length / 10),
       }
     default:
       return state;
