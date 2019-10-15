@@ -1,9 +1,21 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux'
 import { removeFromDeck, saveDeck } from '../actions';
-import SavedDeckAmount from './SavedDeckAmount';
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(theme => ({
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  textField: {
+    marginBottom: theme.spacing(1),
+  }
+}));
 
 const DeckList = props => {
+  const classes = useStyles();
   const [deckName, setDeckName] = useState('');
 
   const removeFromDeck = (e, card) => {
@@ -23,8 +35,24 @@ const DeckList = props => {
     <div className='deck-cont'>
       <div className="deck-top-cont">
         <div>
-          <input type="text" value={deckName} onChange={changeName} placeholder='Set deck name...'/>
-          <button onClick={() => saveDeck(props.currDeck, deckName, props.currClass)}>Save Deck</button>
+          <TextField 
+            id="standard-name"
+            type="text" 
+            label="Deck Name"
+            value={deckName} 
+            onChange={changeName} 
+            placeholder='Set deck name...'
+            className={classes.textField}
+          />
+          <div class="hs-wrapper gold">
+            <a class="hs-button gold" href="">
+              <span class="hs-border gold">
+                <span class="hs-text gold" onClick={() => saveDeck(props.currDeck, deckName, props.currClass)} >
+                  Save Deck
+                </span>
+              </span>
+            </a>
+          </div>
         </div>
         <p className="deck-total">{props.currDeck.length} / 30</p>
       </div>
@@ -39,7 +67,6 @@ const DeckList = props => {
             </div>)
         }
       </div>
-      <SavedDeckAmount currDeck={props.currDeck} />
     </div>
   )
 }

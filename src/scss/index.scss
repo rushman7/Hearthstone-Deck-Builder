@@ -1,4 +1,31 @@
+// media queries
 $phone: 500px;
 $tablet: 800px;
 
-@import "app", "card", "decklist", "logo", "saved_decks"
+// colors
+$theme-colors: (
+	"primary"      : #291313,
+	"secondary"    : #75460B,
+	"white"        : #FFFFFF,
+	"light"        : #EDEDED,
+	"red"          : #D15B00,
+	"yellow"       : #F9BF07,
+	"yellow01"     : #FAC92D,
+	"toxic-green"  : #B8C398,
+	"brown"        : #573b23,
+	"purple"       : #4C0D7A,
+	"purple01"     : #B921C4,
+	"purple02"     : #661F91,
+	"purple03"     : #F756FE,
+	"purple04"     : #4C0D7A,
+	"purple05"     : #E235EE,
+	"purple06"     : #991DB5
+);
+
+@import 
+  "app", 
+  "card", 
+  "decklist", 
+  "logo", 
+  "saved_decks",
+  "buttons"

@@ -1,7 +1,9 @@
 .deck-cont {
   width: 17rem;
-  padding-top: 2rem;
   margin-right: 6rem;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
 
   @media screen and (max-width: $tablet) {
     margin-right: 2rem;
@@ -58,11 +60,6 @@
       text-align: left;
       z-index: 1;
       font-size: 1.3rem;;
-    }
-
-    button {
-      z-index: 1;
-      position: relative;
     }
   }
 }

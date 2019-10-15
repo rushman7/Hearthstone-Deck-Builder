@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { fetchHSCards } from './actions/index';
 import CardsDisplay from './components/CardsDisplay';
 import DeckList from './components/DeckList';
-import { Logo } from './components/Logo';
+import { Header } from './components/Headerer';
 import ErrorMessage from './components/ErrorMessage';
 import { Route } from 'react-router-dom';
 import SavedDeckList from './components/SavedDeckList';
@@ -21,7 +21,7 @@ class App extends Component {
     return (
       <div className="App">
         <ErrorMessage />
-        <Logo />
+        <Header />
         <div className="container">
           <Route exact path="/" component={CardsDisplay}/>
           <Route exact path="/" component={DeckList}/>

@@ -18,7 +18,7 @@
     flex-flow: row wrap;
     justify-content: center;
     overflow: auto;
-    padding: 0rem 2rem 2rem 2rem;
+    padding: 1rem 2rem 2rem 2rem;
   
     @media screen and (max-width: $tablet) {
       width: 100%;
@@ -36,7 +36,8 @@
   
   
     .card-image {
-      width: 13.5rem;
+      width: auto;
+      height: 50%;
       margin: -.8rem 0rem;
       transition: 800ms cubic-bezier(0.19, 1, 0.22, 1) transform;
   

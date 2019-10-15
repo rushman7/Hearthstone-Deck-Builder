@@ -125,17 +125,11 @@ export const rootReducer = (state = initialState, action) => {
         currDeck: action.payload.deck
       }
     case actionType.SET_CLASS:
-      // console.log(
-      //   Math.ceil(
-      //     (state.cards[state.currSetName].filter(card => {
-      //       if (state.currCost === 'All') {
-      //         return card
-      //       } else {
-      //         return parseInt(card.cost) === parseInt(state.currCost)
-      //       }
-      //     }).length / 10)
-      //   )
-      // )
+      console.log((
+        state.cards[state.currSetName].filter(card => {
+          return parseInt(card.cost) === parseInt(state.currCost)
+        })
+      ))
       return {
         ...state,
         currClass: action.payload,

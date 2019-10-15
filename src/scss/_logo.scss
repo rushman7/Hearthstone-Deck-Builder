@@ -1,13 +1,18 @@
 .Logo {
   width: 20vw;
-  margin: auto;
+  margin: 1rem auto;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: center;
 
   @media screen and (max-width: $phone) {
     width: 80%;
   }
 
-  img {
-    width: 100%;
-    height: auto;
+  h2 {
+    width: 20rem;
+    font-size: 3rem;
+    margin-right: 5rem;
   }
 }
