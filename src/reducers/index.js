@@ -121,7 +121,6 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         currClass: action.payload,
-        totalPages: Math.ceil(state.cards[state.currSetName].filter(card => card.playerClass === action.payload || card.playerClass === 'Neutral').length / 10),
       }
     default:
       return state;

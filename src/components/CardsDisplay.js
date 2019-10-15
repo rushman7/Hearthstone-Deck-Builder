@@ -31,7 +31,7 @@ const CardsDisplay = props => {
       <div className="card-image-container">
         {
           props.currSet.length === 0
-          ? <p className="choose-message">Choose a set to display cards</p>
+          ? <p className="choose-message">Choose a class and then a set to being building your deck.</p>
           : currPageCards.map(card => 
           <img 
             onError={addDefaultSrc}

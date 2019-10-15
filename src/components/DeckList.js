@@ -11,13 +11,12 @@ const DeckList = props => {
     props.removeFromDeck(card)
   }
 
-  const saveDeck = (deck, name) => {
-    props.saveDeck(deck, name);
+  const saveDeck = (deck, name, hero) => {
+    props.saveDeck(deck, name, hero);
   }
 
   const changeName = (e) => {
     setDeckName(e.target.value)
-    console.log(deckName)
   }
 
   return (
@@ -25,7 +24,7 @@ const DeckList = props => {
       <div className="deck-top-cont">
         <div>
           <input type="text" value={deckName} onChange={changeName} placeholder='Set deck name...'/>
-          <button onClick={() => saveDeck(props.currDeck, deckName)}>Save Deck</button>
+          <button onClick={() => saveDeck(props.currDeck, deckName, props.currClass)}>Save Deck</button>
         </div>
         <p className="deck-total">{props.currDeck.length} / 30</p>
       </div>
@@ -47,6 +46,7 @@ const DeckList = props => {
 
 const mapStateToProps = state => ({
   currDeck: state.currDeck,
+  currClass: state.currClass,
 })
 
 export default connect(mapStateToProps, { removeFromDeck, saveDeck })(DeckList);

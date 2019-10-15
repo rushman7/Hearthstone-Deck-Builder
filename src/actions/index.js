@@ -74,10 +74,10 @@ export const sortByCost = cost => {
   }
 }
 
-export const saveDeck = (deck, name) => {
+export const saveDeck = (deck, name, hero) => {
   return {
     type: SAVE_DECK,
-    payload: { name, deck }
+    payload: { name, hero, deck }
   }
 }
 
