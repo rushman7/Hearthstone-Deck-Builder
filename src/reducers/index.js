@@ -68,13 +68,20 @@ export const rootReducer = (state = initialState, action) => {
         currDeck: state.currDeck.filter(card => card !== action.payload)
       }
     case actionType.SORT_BY_SET:
-      return {
-        ...state,
-        currSet: state.cards[action.payload],
-        currSetName: action.payload,
-        totalPages: Math.ceil(state.cards[action.payload].length / 10),
-        error: '',
-        currCost: '',
+      if (state.playerClass === '') {
+        return {
+          ...state,
+          error: 'Please select a class.'
+        }
+      } else {
+        return {
+          ...state,
+          currSet: state.cards[action.payload],
+          currSetName: action.payload,
+          totalPages: Math.ceil(state.cards[action.payload].length / 10),
+          error: '',
+          currCost: '',
+        }
       }
     case actionType.SORT_BT_COST:
       if (state.playerClass === '') {
@@ -118,6 +125,17 @@ export const rootReducer = (state = initialState, action) => {
         currDeck: action.payload.deck
       }
     case actionType.SET_CLASS:
+      // console.log(
+      //   Math.ceil(
+      //     (state.cards[state.currSetName].filter(card => {
+      //       if (state.currCost === 'All') {
+      //         return card
+      //       } else {
+      //         return parseInt(card.cost) === parseInt(state.currCost)
+      //       }
+      //     }).length / 10)
+      //   )
+      // )
       return {
         ...state,
         currClass: action.payload,
