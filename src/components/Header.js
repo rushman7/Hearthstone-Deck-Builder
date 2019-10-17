@@ -5,15 +5,15 @@ export const Header = () => {
   return (
     <div className="Logo">
       <Link to="/"><h2>Hearthstone Deck Builder</h2></Link>
-      <div class="hs-wrapper gold">
+      <div className="hs-wrapper gold">
         <Link to="/Saved_Decks">
-          <a class="hs-button gold" href="">
-            <span class="hs-border gold">
-              <span class="hs-text gold">
+          <span className="hs-button gold">
+            <span className="hs-border gold">
+              <span className="hs-text gold">
                 All Decks
               </span>
             </span>
-          </a>
+          </span>
         </Link>
       </div>
     </div>

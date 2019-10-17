@@ -44,14 +44,14 @@ const DeckList = props => {
             placeholder='Set deck name...'
             className={classes.textField}
           />
-          <div class="hs-wrapper gold">
-            <a class="hs-button gold" href="">
-              <span class="hs-border gold">
-                <span class="hs-text gold" onClick={() => saveDeck(props.currDeck, deckName, props.currClass)} >
+          <div className="hs-wrapper gold">
+            <span className="hs-button gold">
+              <span className="hs-border gold">
+                <span className="hs-text gold" onClick={() => saveDeck(props.currDeck, deckName, props.currClass)} >
                   Save Deck
                 </span>
               </span>
-            </a>
+            </span>
           </div>
         </div>
         <p className="deck-total">{props.currDeck.length} / 30</p>

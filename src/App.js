@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { fetchHSCards } from './actions/index';
 import CardsDisplay from './components/CardsDisplay';
 import DeckList from './components/DeckList';
-import { Header } from './components/Headerer';
+import { Header } from './components/Header';
 import ErrorMessage from './components/ErrorMessage';
 import { Route } from 'react-router-dom';
 import SavedDeckList from './components/SavedDeckList';
