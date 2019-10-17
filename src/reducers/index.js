@@ -11,7 +11,7 @@ const initialState = {
   currDeck: [],
   currSet: [],
   currSetName: '',
-  currCost: '',
+  currCost: 'All',
   savedDecks: [],
   currClass: ''
 }
@@ -78,9 +78,12 @@ export const rootReducer = (state = initialState, action) => {
           ...state,
           currSet: state.cards[action.payload],
           currSetName: action.payload,
-          totalPages: Math.ceil(state.cards[action.payload].length / 10),
+          totalPages:             
+            Math.ceil((state.cards[action.payload].filter(card => {
+              return (card.playerClass === state.currClass) || (card.playerClass === 'Neutral')
+            })).length / 10),
           error: '',
-          currCost: '',
+          currCost: 'All',
         }
       }
     case actionType.SORT_BT_COST:
@@ -94,7 +97,10 @@ export const rootReducer = (state = initialState, action) => {
           ...state,
           currCost: action.payload,
           currSet: state.cards[state.currSetName],
-          totalPages: Math.ceil(state.cards[state.currSetName].length / 10),
+          totalPages:           
+            Math.ceil((state.cards[state.currSetName].filter(card => {
+              return card.playerClass === state.currClass || card.playerClass === 'Neutral';
+            })).length / 10),
           error: '',
         }
       } else if (action.payload === '7+') {
@@ -102,7 +108,10 @@ export const rootReducer = (state = initialState, action) => {
           ...state,
           currSet: state.cards[state.currSetName].filter(card => card.cost > 10),
           currCost: action.payload,
-          totalPages: Math.ceil(state.cards[state.currSetName].filter(card => parseInt(card.cost) === action.payload).length / 10),
+          totalPages: 
+            Math.ceil((state.cards[state.currSetName].filter(card => {
+              return (card.playerClass === state.currClass && card.cost === action.payload) || (card.playerClass === 'Neutral' && card.cost === action.payload);
+            })).length / 10),
           error: '',
         }
       } else {
@@ -110,7 +119,10 @@ export const rootReducer = (state = initialState, action) => {
           ...state,
           currSet: state.cards[state.currSetName].filter(card => parseInt(card.cost) === action.payload),
           currCost: action.payload,
-          totalPages: Math.ceil(state.cards[state.currSetName].filter(card => parseInt(card.cost) === action.payload).length / 10),
+          totalPages:
+            Math.ceil((state.cards[state.currSetName].filter(card => {
+              return (card.playerClass === state.currClass && card.cost === action.payload) || (card.playerClass === 'Neutral' && card.cost === action.payload);
+            })).length / 10),
           error: '',
         }
       }
@@ -125,14 +137,17 @@ export const rootReducer = (state = initialState, action) => {
         currDeck: action.payload.deck
       }
     case actionType.SET_CLASS:
-      console.log((
-        state.cards[state.currSetName].filter(card => {
-          return parseInt(card.cost) === parseInt(state.currCost)
-        })
-      ))
       return {
         ...state,
         currClass: action.payload,
+        totalPages: 
+          Math.ceil((state.cards[state.currSetName].filter(card => {
+            if (state.currCost === 'All') {
+              return card.playerClass === action.payload || card.playerClass === 'Neutral';
+            } else {
+              return (card.playerClass === action.payload && card.cost === state.currCost) || (card.playerClass === 'Neutral' && card.cost === state.currCost);
+            }
+          })).length / 10),
       }
     default:
       return state;

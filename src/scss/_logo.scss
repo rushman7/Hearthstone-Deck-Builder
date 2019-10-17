@@ -1,9 +1,9 @@
 .Logo {
-  width: 20vw;
   margin: 1rem auto;
+  width: 80%;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
 
   @media screen and (max-width: $phone) {

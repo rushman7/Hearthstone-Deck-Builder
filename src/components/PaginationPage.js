@@ -10,7 +10,7 @@ const PaginationPage = (props) => {
   }
 
   return (
-    <div>
+    <div className="pagination-div">
       <Pagination 
         totalPages={props.totalPages} 
         activePage={props.currPage}
