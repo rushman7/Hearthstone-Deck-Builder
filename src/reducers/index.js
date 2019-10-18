@@ -136,7 +136,6 @@ export const rootReducer = (state = initialState, action) => {
         }
       }
     case actionType.SAVE_DECK:
-      console.log(action.payload)
       if (action.payload.name === "") {
         return {
           ...state,

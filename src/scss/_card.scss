@@ -1,9 +1,9 @@
 .card-display-container {
   width: 60%;
-  margin: 0 0 0 5rem;
 
   @media screen and (max-width: $tablet) {
-    margin-left: 1rem;
+    margin: 0rem auto;
+    width: 90%;
   }
 
   @media screen and (max-width: $phone) {
@@ -12,21 +12,22 @@
   }
 
   .card-image-container {
-    width: 100%;
+    width: 60rem;
     height: 60vh;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     overflow: auto;
     padding: 1rem 2rem 2rem 2rem;
+
+    @media screen and (max-width: $tabletPlus) {
+      width: 100%
+    }
   
     @media screen and (max-width: $tablet) {
       width: 100%;
       padding: 0;
       margin-bottom: 1rem;
-    }
-  
-    @media screen and (max-width: $phone) {
     }
 
     .choose-message {
