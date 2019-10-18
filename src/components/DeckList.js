@@ -59,11 +59,13 @@ const DeckList = props => {
         {
           props.currDeck.length === 0
           ? <p>Click on cards to add them to your deck</p>
-          : props.currDeck.map((card, index) => 
-            <div key={index} className="deck-card-cont" onClick={(e) => removeFromDeck(e, card)}>
-              <h2>{card.name}</h2>
-              <img src={card.img} alt={card.name} />
-            </div>)
+          : props.currDeck
+            .sort((a, b) => (a.cost > b.cost) ? 1 : -1)
+            .map((card, index) => 
+              <div key={index} className="deck-card-cont" onClick={(e) => removeFromDeck(e, card)}>
+                <h2>{card.name}</h2>
+                <img src={card.img} alt={card.name} />
+              </div>)
         }
       </div>
     </div>
