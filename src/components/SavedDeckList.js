@@ -1,13 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setEditToCurr } from '../actions/index';
+import { setEditToCurr, deleteDeck, setClass } from '../actions/index';
 import Button from '@material-ui/core/Button';
 
 
 const SavedDeckList = props => {
-  const editDeck = (team) => {
-    props.setEditToCurr(team)
+  const editDeck = (deck) => {
+    props.setEditToCurr(deck)
+    props.setClass(deck.hero)
     props.history.push('/')
+  }
+
+  const deleteDeck = deck => {
+    props.deleteDeck(deck)
   }
 
   return (
@@ -20,7 +25,13 @@ const SavedDeckList = props => {
             color="primary"
             onClick={() => editDeck(deck)}
             className="saved-deck-button"
-          >Edit Deck</Button>
+          >Edit</Button>
+          <Button 
+            variant="contained" 
+            color="primary"
+            onClick={() => deleteDeck(deck)}
+            className="saved-deck-button"
+          >Delete</Button>
           <img 
             src={require(`../images/${deck.hero}.jpg`)} 
             alt={deck.hero}
@@ -37,4 +48,4 @@ const mapStateToProps = state => ({
   savedDecks: state.savedDecks
 })
 
-export default connect(mapStateToProps, { setEditToCurr })(SavedDeckList);
+export default connect(mapStateToProps, { setEditToCurr, deleteDeck, setClass })(SavedDeckList);

@@ -154,6 +154,13 @@ export const rootReducer = (state = initialState, action) => {
           error: '',
         }
       }
+    case actionType.DELETE_DECK:
+      return {
+        ...state,
+        savedDecks: state.savedDecks.filter(deck => deck !== action.payload),
+        success: 'Deck Deleted',
+        error: '',
+      }
     case actionType.SET_CURR_TO_EDIT:
       return {
         ...state,

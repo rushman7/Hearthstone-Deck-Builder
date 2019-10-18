@@ -10,6 +10,7 @@ export const REMOVE_FROM_DECK = 'REMOVE_FROM_DECK';
 export const SORT_BY_SET = 'SORT_BY_SET';
 export const SORT_BT_COST = 'SORT_BT_COST';
 export const SAVE_DECK = 'SAVE_DECK';
+export const DELETE_DECK = 'DELETE_DECK';
 export const SET_CURR_TO_EDIT = 'SET_CURR_TO_EDIT';
 export const SET_CLASS = 'SET_CLASS';
 
@@ -78,6 +79,13 @@ export const saveDeck = (deck, name, hero) => {
   return {
     type: SAVE_DECK,
     payload: { name, hero, deck }
+  }
+}
+
+export const deleteDeck = (deck) => {
+  return {
+    type: DELETE_DECK,
+    payload: deck
   }
 }
 
