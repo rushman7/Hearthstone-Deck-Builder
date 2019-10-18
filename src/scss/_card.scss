@@ -12,13 +12,18 @@
   }
 
   .card-image-container {
-    width: 60rem;
+    width: 65rem;
     height: 60vh;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
+    margin: auto;
     overflow: auto;
     padding: 1rem 2rem 2rem 2rem;
+
+    @media screen and (max-width: 1300px) {
+      width: 55rem;
+    }
 
     @media screen and (max-width: $tabletPlus) {
       width: 100%
