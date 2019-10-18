@@ -1,5 +1,5 @@
 .card-display-container {
-  width: 60%;
+  width: 70%;
 
   @media screen and (max-width: $tablet) {
     margin: 0rem auto;
@@ -12,7 +12,7 @@
   }
 
   .card-image-container {
-    width: 65rem;
+    width: 80%;
     height: 60vh;
     display: flex;
     flex-flow: row wrap;
@@ -21,8 +21,12 @@
     overflow: auto;
     padding: 1rem 2rem 2rem 2rem;
 
-    @media screen and (max-width: 1300px) {
-      width: 55rem;
+    @media screen and (max-width: 1650px) {
+      width: 90%;
+    }
+
+    @media screen and (max-width: 1480px) {
+      width: 100%;
     }
 
     @media screen and (max-width: $tabletPlus) {

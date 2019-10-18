@@ -4,10 +4,9 @@ import { fetchHSCards } from './actions/index';
 import CardsDisplay from './components/CardsDisplay';
 import DeckList from './components/DeckList';
 import { Header } from './components/Header';
-import ErrorMessage from './components/ErrorMessage';
+import Messages from './components/Messages';
 import { Route } from 'react-router-dom';
 import SavedDeckList from './components/SavedDeckList';
-import SuccessMessage from './components/SuccessMessage';
 
 class App extends Component {
   componentDidMount() {
@@ -17,8 +16,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <SuccessMessage />
-        <ErrorMessage />
+        <Messages />
         <Header />
         <div className="container">
           <Route exact path="/" component={CardsDisplay}/>

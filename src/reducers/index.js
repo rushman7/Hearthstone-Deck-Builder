@@ -23,7 +23,8 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         error: '',
-        isFetching: true
+        isFetching: true,
+        success: '',
       }
     case actionType.FETCH_CARDS_SUCCESS:
       return {
@@ -31,18 +32,18 @@ export const rootReducer = (state = initialState, action) => {
         error: '',
         isFetching: false,
         cards: action.payload,
-        success: 'Data successfully fetched',
+        success: '',
       }
     case actionType.ERROR:
       return {
         ...state,
         error: action.payload,
-        isFetching: false
+        isFetching: false,
+        success: '',
       }
     case actionType.CHANGE_PAGE:
       return {
         ...state,
-        error: '',
         currPage: action.payload,
         success: '',
       }
@@ -51,11 +52,13 @@ export const rootReducer = (state = initialState, action) => {
         return {
           ...state,
           error: `You already have two copies of ${action.payload.name}.`,
+          success: '',
         }
       } else if (state.currDeck.length >= 30) {
         return {
           ...state,
           error: 'Your deck is full.',
+          success: '',
         }
       } else {
         return {
@@ -76,7 +79,8 @@ export const rootReducer = (state = initialState, action) => {
       if (state.playerClass === '') {
         return {
           ...state,
-          error: 'Please select a class.'
+          error: 'Please select a class.',
+          success: '',
         }
       } else {
         return {
@@ -139,25 +143,38 @@ export const rootReducer = (state = initialState, action) => {
       if (action.payload.name === "") {
         return {
           ...state,
-          error: 'Deck name is required'
+          error: 'Deck name is required',
+          success: '',
         }
       } else {
         return {
           ...state,
           savedDecks: [...state.savedDecks, action.payload],
-          success: 'Deck Saved'
+          success: 'Deck Saved',
+          error: '',
         }
       }
     case actionType.SET_CURR_TO_EDIT:
       return {
         ...state,
-        currDeck: action.payload.deck
+        currDeck: action.payload.deck,
+        success: '',
+        error: '',
       }
     case actionType.SET_CLASS:
-      if (!state.cards[state.currSetName]) {
+      if (state.currDeck.filter(card => card.playerClass === state.currClass).length > 0) {
+        const num = state.currDeck.filter(card => card.playerClass === state.currClass).length;
+        return {
+          ...state,
+          error: `Current deck contains ${num} ${state.currClass} cards. Remove them to switch to ${action.payload}.`,
+          success: '',
+        }
+      } else if (!state.cards[state.currSetName]) {
         return {
           ...state,
           currClass: action.payload,
+          success: '',
+          error: '',
         }
       } else {
         return {
@@ -171,6 +188,8 @@ export const rootReducer = (state = initialState, action) => {
                 return (card.playerClass === action.payload && card.cost === state.currCost) || (card.playerClass === 'Neutral' && card.cost === state.currCost);
               }
             })).length / 10),
+          success: '',
+          error: '',
         }
       }
     default:

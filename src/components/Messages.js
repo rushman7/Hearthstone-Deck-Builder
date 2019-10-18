@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { css } from 'glamor';
 
 
-const ErrorMessage = props => {
+const Messages = props => {
   const notify = () => toast(props.error ,{
     className: css({
       background: 'red'
@@ -18,16 +18,32 @@ const ErrorMessage = props => {
       background: "#ffb7b7"
     })
   });
+
+  const successToast = () => toast(props.success ,{
+    className: css({
+      background: 'green'
+    }),
+    bodyClassName: css({
+      fontSize: '1rem',
+      color: 'white'
+    }),
+    progressClassName: css({
+      background: "white"
+    })
+  });
+
   return (
     <div>
       {props.error && <p>{notify()}</p>}
-      <ToastContainer autoClose={4000}/>
+      {props.success && <p>{successToast()}</p>}
+      <ToastContainer autoClose={3000}/>
     </div>
   );
 }
 
 const mapStateToProps = state => ({
-  error: state.error
+  error: state.error,
+  success: state.success,
 })
 
-export default connect(mapStateToProps, {})(ErrorMessage)
+export default connect(mapStateToProps, {})(Messages)
