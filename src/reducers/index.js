@@ -13,7 +13,8 @@ const initialState = {
   currSetName: '',
   currCost: 'All',
   savedDecks: [],
-  currClass: ''
+  currClass: '',
+  success: ''
 }
 
 export const rootReducer = (state = initialState, action) => {
@@ -30,6 +31,7 @@ export const rootReducer = (state = initialState, action) => {
         error: '',
         isFetching: false,
         cards: action.payload,
+        success: 'Data successfully fetched',
       }
     case actionType.ERROR:
       return {
@@ -41,7 +43,8 @@ export const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         error: '',
-        currPage: action.payload
+        currPage: action.payload,
+        success: '',
       }
     case actionType.ADD_TO_DECK:
       if (state.currDeck.filter(card => card.name === action.payload.name).length === 2) {
@@ -59,13 +62,15 @@ export const rootReducer = (state = initialState, action) => {
           ...state,
           error: '',
           currDeck: [...state.currDeck, action.payload],
+          success: '',
         }
       }
     case actionType.REMOVE_FROM_DECK:
       return {
         ...state,
         error: '',
-        currDeck: state.currDeck.filter(card => card !== action.payload)
+        currDeck: state.currDeck.filter(card => card !== action.payload),
+        success: '',
       }
     case actionType.SORT_BY_SET:
       if (state.playerClass === '') {
@@ -84,6 +89,7 @@ export const rootReducer = (state = initialState, action) => {
             })).length / 10),
           error: '',
           currCost: 'All',
+          success: '',
         }
       }
     case actionType.SORT_BT_COST:
@@ -102,6 +108,7 @@ export const rootReducer = (state = initialState, action) => {
               return card.playerClass === state.currClass || card.playerClass === 'Neutral';
             })).length / 10),
           error: '',
+          success: '',
         }
       } else if (action.payload === '7+') {
         return {
@@ -113,6 +120,7 @@ export const rootReducer = (state = initialState, action) => {
               return (card.playerClass === state.currClass && card.cost === action.payload) || (card.playerClass === 'Neutral' && card.cost === action.payload);
             })).length / 10),
           error: '',
+          success: '',
         }
       } else {
         return {
@@ -124,12 +132,22 @@ export const rootReducer = (state = initialState, action) => {
               return (card.playerClass === state.currClass && card.cost === action.payload) || (card.playerClass === 'Neutral' && card.cost === action.payload);
             })).length / 10),
           error: '',
+          success: '',
         }
       }
     case actionType.SAVE_DECK:
-      return {
-        ...state,
-        savedDecks: [...state.savedDecks, action.payload]
+      console.log(action.payload)
+      if (action.payload.name === "") {
+        return {
+          ...state,
+          error: 'Deck name is required'
+        }
+      } else {
+        return {
+          ...state,
+          savedDecks: [...state.savedDecks, action.payload],
+          success: 'Deck Saved'
+        }
       }
     case actionType.SET_CURR_TO_EDIT:
       return {
