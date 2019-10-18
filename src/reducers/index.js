@@ -137,17 +137,24 @@ export const rootReducer = (state = initialState, action) => {
         currDeck: action.payload.deck
       }
     case actionType.SET_CLASS:
-      return {
-        ...state,
-        currClass: action.payload,
-        totalPages: 
-          Math.ceil((state.cards[state.currSetName].filter(card => {
-            if (state.currCost === 'All') {
-              return card.playerClass === action.payload || card.playerClass === 'Neutral';
-            } else {
-              return (card.playerClass === action.payload && card.cost === state.currCost) || (card.playerClass === 'Neutral' && card.cost === state.currCost);
-            }
-          })).length / 10),
+      if (!state.cards[state.currSetName]) {
+        return {
+          ...state,
+          currClass: action.payload,
+        }
+      } else {
+        return {
+          ...state,
+          currClass: action.payload,
+          totalPages: 
+            Math.ceil((state.cards[state.currSetName].filter(card => {
+              if (state.currCost === 'All') {
+                return card.playerClass === action.payload || card.playerClass === 'Neutral';
+              } else {
+                return (card.playerClass === action.payload && card.cost === state.currCost) || (card.playerClass === 'Neutral' && card.cost === state.currCost);
+              }
+            })).length / 10),
+        }
       }
     default:
       return state;

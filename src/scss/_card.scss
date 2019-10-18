@@ -55,4 +55,12 @@
 
 .pagination-div {
   margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .saved-deck-button {
+    margin-top: 1rem;
+  }
 }

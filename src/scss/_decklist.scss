@@ -69,6 +69,12 @@
   flex-flow: row wrap;
   justify-content: space-around;
   align-items: center;
+
+  div {
+    .saved-deck-button {
+      width: 100%;
+    }
+  }
 }
 
 .deck-total {

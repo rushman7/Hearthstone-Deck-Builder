@@ -14,10 +14,6 @@ class App extends Component {
   }
 
   render() {
-    if (this.props.isFetching) {
-      return <p>Data is loading...</p>
-    }
-
     return (
       <div className="App">
         <ErrorMessage />
