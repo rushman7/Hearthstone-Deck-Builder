@@ -22,7 +22,7 @@ class App extends Component {
           <Route exact path="/" component={CardsDisplay}/>
           <Route exact path="/" component={DeckList}/>
         </div>
-        <Route exact path="/Saved_Decks" component={SavedDeckList}/>
+        <Route exact path="/decks" component={SavedDeckList}/>
       </div>
     );
   }

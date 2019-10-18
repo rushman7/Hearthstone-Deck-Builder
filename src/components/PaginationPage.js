@@ -18,12 +18,12 @@ const PaginationPage = (props) => {
         activePage={props.currPage}
         onPageChange={handlePaginationChange}
       />
-      <Link to="/Saved_Decks">
+      <Link to="/decks">
         <Button 
           variant="contained" 
           color="primary"
           className="saved-deck-button"
-        >All Saved Decks</Button>
+        >All Decks</Button>
       </Link>
     </div>
   )
