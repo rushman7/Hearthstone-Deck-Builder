@@ -1,7 +1,6 @@
 Hearthstone Deck Builder is an app created with React and Redux. Data is parsed from [HearthstoneAPI](https://rapidapi.com/omgvamp/api/hearthstone)
 
 **[Link](https://hearthstone-decks-builder.netlify.com)**  
-**[Github](https://github.com/rushman7/Hearthstone-Deck-Builder)**
 
 ##### Stack:
 - React.js:
